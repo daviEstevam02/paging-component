@@ -1,5 +1,7 @@
 ﻿using EasyDocs.Domain.Core.Entities;
 using EasyDocs.Domain.ValueObjects;
+using Flunt.Br;
+using Flunt.Validations;
 
 namespace EasyDocs.Domain.Entities;
 
@@ -29,7 +31,11 @@ public sealed class Establishment : Entity
         Cnpj = cnpj;
         IsHeadquarter = isHeadquarter;
 
-        AddNotifications(Codes, FantasyName, LegalName, Address, Contact, Cnpj);
+        AddNotifications(Codes, FantasyName, LegalName, Address, Contact, Cnpj,
+            new Contract<Establishment>()
+            .Requires()
+            .IsTrue(CompanyId == Guid.Empty, "Establishment.CompanyId", "O código do estabelecimento não pode ser vazio.")
+            );
     }
 
     public Guid CompanyId { get; private set; }
