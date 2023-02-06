@@ -1,9 +1,9 @@
 ﻿using EasyDocs.Domain.Core.Entities;
+using System.Linq.Expressions;
 
 namespace EasyDocs.Domain.Core.Interfaces;
 
 public interface IBaseRepository<T> where T : Entity
 {
-    Task Add(T entity);
-    Task Update(T entity);
+    Task<T> GetOneWhere(Expression<Func<T, bool>> condition);
 }
