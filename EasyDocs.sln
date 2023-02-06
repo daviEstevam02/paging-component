@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyDocs.WebApi", "src\EasyDocs.WebApi\EasyDocs.WebApi.csproj", "{6A37B1A0-04E8-428D-9BF5-0103BA78014B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyDocs.WebApi", "src\EasyDocs.WebApi\EasyDocs.WebApi.csproj", "{6A37B1A0-04E8-428D-9BF5-0103BA78014B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A461C438-2217-4544-B428-97195D98AD12}"
 EndProject
@@ -21,9 +21,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Data", "4.1 - Data", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - CrossCutting", "4.2 - CrossCutting", "{75857F3B-1E50-409B-A03A-ABBC4B641FE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyDocs.Domain.Core", "src\EasyDocs.Domain.Core\EasyDocs.Domain.Core.csproj", "{20FF45E4-0167-4D8B-8DBE-8B9EBDA3EED7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyDocs.Domain.Core", "src\EasyDocs.Domain.Core\EasyDocs.Domain.Core.csproj", "{20FF45E4-0167-4D8B-8DBE-8B9EBDA3EED7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyDocs.Domain", "src\EasyDocs.Domain\EasyDocs.Domain.csproj", "{971A2351-1FF2-4137-9739-5E80F4095B5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyDocs.Domain", "src\EasyDocs.Domain\EasyDocs.Domain.csproj", "{971A2351-1FF2-4137-9739-5E80F4095B5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyDocs.Infra.Data", "src\EasyDocs.Infra.Data\EasyDocs.Infra.Data.csproj", "{F6001B83-8A26-4B6D-BE70-362A4073A5FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{971A2351-1FF2-4137-9739-5E80F4095B5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{971A2351-1FF2-4137-9739-5E80F4095B5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{971A2351-1FF2-4137-9739-5E80F4095B5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6001B83-8A26-4B6D-BE70-362A4073A5FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6001B83-8A26-4B6D-BE70-362A4073A5FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6001B83-8A26-4B6D-BE70-362A4073A5FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6001B83-8A26-4B6D-BE70-362A4073A5FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,6 +64,7 @@ Global
 		{75857F3B-1E50-409B-A03A-ABBC4B641FE1} = {38CFD960-66C4-462F-B581-0DB284AE1901}
 		{20FF45E4-0167-4D8B-8DBE-8B9EBDA3EED7} = {163CD6C3-B671-49A9-B5F4-66580A36EA8B}
 		{971A2351-1FF2-4137-9739-5E80F4095B5F} = {163CD6C3-B671-49A9-B5F4-66580A36EA8B}
+		{F6001B83-8A26-4B6D-BE70-362A4073A5FA} = {1530A606-12DA-4A0F-A204-B4FECEF9B44D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {62C6F773-EDBB-45B7-A39A-E1F3CAF23A62}
