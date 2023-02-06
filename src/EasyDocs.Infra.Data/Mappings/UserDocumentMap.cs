@@ -10,6 +10,8 @@ public sealed class UserDocumentMap : IEntityTypeConfiguration<UserDocument>
     {
         builder.HasKey(ud => new { ud.UserId, ud.DocumentId });
 
+        builder.Ignore(ud => ud.Notifications);
+
         builder.HasOne(ud => ud.Licensee)
             .WithMany(l => l.UserDocuments)
             .HasForeignKey(ud => ud.LicenseeId);

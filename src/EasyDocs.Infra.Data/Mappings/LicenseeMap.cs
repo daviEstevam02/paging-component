@@ -10,11 +10,15 @@ public sealed class LicenseeMap : IEntityTypeConfiguration<Licensee>
     {
         builder.HasKey(l => l.Id);
 
+        builder.Ignore(l => l.Notifications);
+
         builder.OwnsOne(l => l.Description, description =>
         {
             description.Property(d => d.Text)
             .HasColumnType("varchar(150)")
             .HasColumnName("Description");
+
+            description.Ignore(d => d.Notifications);
         });
     }
 }

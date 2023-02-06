@@ -1,4 +1,5 @@
 ﻿using EasyDocs.Domain.Entities;
+using EasyDocs.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -9,6 +10,8 @@ public sealed class DocumentMap : IEntityTypeConfiguration<Document>
     public void Configure(EntityTypeBuilder<Document> builder)
     {
         builder.HasKey(d => d.Id);
+
+        builder.Ignore(d => d.Notifications);
 
         builder.HasOne(d => d.Licensee)
             .WithMany(l => l.Documents)
@@ -27,6 +30,8 @@ public sealed class DocumentMap : IEntityTypeConfiguration<Document>
             description.Property(desc => desc.Text)
             .HasColumnType("varchar(150)")
             .HasColumnName("Description");
+
+            description.Ignore(d => d.Notifications);
         });
 
         builder.OwnsOne(d => d.Source, source =>
@@ -34,6 +39,8 @@ public sealed class DocumentMap : IEntityTypeConfiguration<Document>
             source.Property(s => s.Text)
             .HasColumnType("varchar(250)")
             .HasColumnName("Source");
+
+            source.Ignore(s => s.Notifications);
         });
 
         builder.Property(d => d.File)

@@ -10,6 +10,8 @@ public sealed class UserTypeMap : IEntityTypeConfiguration<UserType>
     {
         builder.HasKey(ut => ut.Id);
 
+        builder.Ignore(ut => ut.Notifications);
+
         builder.HasOne(ut => ut.Licensee)
             .WithMany(l => l.UserTypes)
             .HasForeignKey(ut => ut.LicenseeId);
@@ -23,6 +25,8 @@ public sealed class UserTypeMap : IEntityTypeConfiguration<UserType>
             description.Property(d => d.Text)
             .HasColumnType("varchar(150)")
             .HasColumnName("Description");
+
+            description.Ignore(d => d.Notifications);
         });
 
         builder.OwnsOne(ut => ut.Roles, roles =>
@@ -42,6 +46,8 @@ public sealed class UserTypeMap : IEntityTypeConfiguration<UserType>
             roles.Property(r => r.CanDelete)
            .HasColumnType("boolean")
            .HasColumnName("CanDelete");
+
+            roles.Ignore(r => r.Notifications);
         });
     }
 }

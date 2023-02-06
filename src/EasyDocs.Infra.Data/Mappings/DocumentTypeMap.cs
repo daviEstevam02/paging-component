@@ -10,6 +10,8 @@ public sealed class DocumentTypeMap : IEntityTypeConfiguration<DocumentType>
     {
         builder.HasKey(dt => dt.Id);
 
+        builder.Ignore(dt => dt.Notifications);
+
         builder.HasOne(dt => dt.Licensee)
             .WithMany(l => l.DocumentTypes)
             .HasForeignKey(dt => dt.LicenseeId);
@@ -23,6 +25,8 @@ public sealed class DocumentTypeMap : IEntityTypeConfiguration<DocumentType>
             description.Property(d => d.Text)
             .HasColumnType("varchar(150)")
             .HasColumnName("Description");
+
+            description.Ignore(d => d.Notifications);
         });
     }
 }

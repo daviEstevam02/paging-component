@@ -10,6 +10,8 @@ public sealed class CompanyMap : IEntityTypeConfiguration<Company>
     {
         builder.HasKey(c => c.Id);
 
+        builder.Ignore(c => c.Notifications);
+
         builder.HasOne(c => c.Licensee)
             .WithMany(l => l.Companies)
             .HasForeignKey(c => c.LicenseeId);
@@ -19,6 +21,8 @@ public sealed class CompanyMap : IEntityTypeConfiguration<Company>
             fantasyName.Property(f => f.Name)
             .HasColumnType("varchar(100)")
             .HasColumnName("FantasyName");
+
+            fantasyName.Ignore(f => f.Notifications);
         });
 
         builder.OwnsOne(c => c.LegalName, legalName =>
@@ -26,6 +30,8 @@ public sealed class CompanyMap : IEntityTypeConfiguration<Company>
             legalName.Property(l => l.Name)
             .HasColumnType("varchar(200)")
             .HasColumnName("LegalName");
+
+            legalName.Ignore(l => l.Notifications);
         });
 
         builder.OwnsOne(c => c.Address, address =>
@@ -57,6 +63,8 @@ public sealed class CompanyMap : IEntityTypeConfiguration<Company>
             address.Property(a => a.Compliment)
             .HasColumnType("varchar(200)")
             .HasColumnName("Compliment");
+
+            address.Ignore(a => a.Notifications);
         });
 
         builder.OwnsOne(c => c.Contact, contact =>
@@ -64,6 +72,8 @@ public sealed class CompanyMap : IEntityTypeConfiguration<Company>
             contact.Property(c => c.Number)
             .HasColumnType("varchar(22)")
             .HasColumnName("Contact");
+
+            contact.Ignore(c => c.Notifications);
         });
 
         builder.OwnsOne(c => c.Cnpj, cnpj =>
@@ -71,6 +81,8 @@ public sealed class CompanyMap : IEntityTypeConfiguration<Company>
             cnpj.Property(c => c.Number)
             .HasColumnType("varchar(14)")
             .HasColumnName("Cnpj");
+
+            cnpj.Ignore(c => c.Notifications);
         });
     }
 }

@@ -6,7 +6,7 @@ namespace EasyDocs.Infra.Data.Context;
 
 public class EasyDocsContext : DbContext
 {
-    public EasyDocsContext(DbContextOptions options) 
+    public EasyDocsContext(DbContextOptions<EasyDocsContext> options) 
         : base(options)
     { }
 
