@@ -41,7 +41,7 @@ public sealed class Company : Entity
     public Licensee Licensee { get; private set; } = null!;
     public List<Document> Documents { get; private set; } = null!;
     public List<DocumentType> DocumentTypes { get; private set; } = null!;
-    public List<User> User { get; private set; } = null!;
+    public List<User> Users { get; private set; } = null!;
     public List<UserDocument> UserDocuments { get; private set; } = null!;
     public List<UserType> UserTypes { get; private set; } = null!;
 }

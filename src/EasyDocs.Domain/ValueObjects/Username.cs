@@ -16,7 +16,7 @@ public sealed class Username : ValueObject
             .IsNotNullOrEmpty(Nickname, "Username.Nickname", "O nome de usuário não deve ser vazio.")
             .IsNotNullOrWhiteSpace(Nickname, "Username.Nickname", "O nome de usuário não deve ser vazio.")
             .IsLowerOrEqualsThan(5, Nickname.Length, "Username.Nickname", "O nome de usuário não deve conter menos de 5 caracteres.")
-            .IsGreaterOrEqualsThan(20, Nickname.Length, "Username.Nickname", "O nome de usuário não deve conter mais de 20 caracteres.")
+            .IsGreaterOrEqualsThan(30, Nickname.Length, "Username.Nickname", "O nome de usuário não deve conter mais de 20 caracteres.")
             );
     }
 

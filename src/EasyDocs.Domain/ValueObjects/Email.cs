@@ -15,6 +15,7 @@ public sealed class Email : ValueObject
         AddNotifications(new Contract<Email>()
             .Requires()
             .IsNotEmail(Address, "Email.Address", "Email inválido.")
+            .IsGreaterOrEqualsThan(100, Address.Length, "Email.Address", "O email não deve conter mais de 100 caracteres.")
             );
     }
 

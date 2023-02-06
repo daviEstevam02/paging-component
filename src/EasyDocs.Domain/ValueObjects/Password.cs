@@ -15,7 +15,7 @@ public sealed class Password : ValueObject
             .IsNotNullOrWhiteSpace(PasswordTyped, "Password.PasswordTyped", "A senha não deve ser vazia.")
             .IsNotNullOrEmpty(PasswordTyped, "Password.PasswordTyped", "A senha não deve ser vazia.")
             .IsLowerThan(6, PasswordTyped.Length, "Password.PasswordTyped", "A senha deve conter mais de 6 caracteres.")
-            .IsGreaterThan(40, PasswordTyped.Length, "Password.PasswordTyped", "A senha deve conter menos de 40 caracteres.")
+            .IsGreaterThan(16, PasswordTyped.Length, "Password.PasswordTyped", "A senha deve conter menos de 16 caracteres.")
             .IsTrue(Validate(), "Password.PasswordTyped", "A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um carácter especial.")
             );
     }
