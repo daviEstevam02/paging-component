@@ -6,8 +6,30 @@ namespace EasyDocs.Domain.Entities;
 
 public sealed class User : Entity
 {
-	private User()
+    private User()
 	{ }
+
+    public User(
+        Guid id, 
+        Guid licenseeId, 
+        Guid companyId, 
+        Guid userTypeId, 
+        EDocumentGroup documentGroup, 
+        Username username, 
+        Email email, 
+        Password password
+        ) : base(id)
+    {
+        LicenseeId = licenseeId;
+        CompanyId = companyId;
+        UserTypeId = userTypeId;
+        DocumentGroup = documentGroup;
+        Username = username;
+        Email = email;
+        Password = password;
+
+        AddNotifications(Username, Email, Password);
+    }
 
     public Guid LicenseeId { get; private set; }
     public Guid CompanyId { get; private set; }
