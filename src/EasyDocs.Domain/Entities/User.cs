@@ -35,9 +35,9 @@ public sealed class User : Entity
     public Guid CompanyId { get; private set; }
     public Guid UserTypeId { get; private set; }
     public EDocumentGroup DocumentGroup { get; private set; }
-    public Username Username { get; private set; }
-    public Email Email { get; private set; }
-    public Password Password { get; private set; }
+    public Username Username { get; private set; } = null!;
+    public Email Email { get; private set; } = null!;
+    public Password Password { get; private set; } = null!;
 
     public Licensee Licensee { get; private set; } = null!;
     public Company Company { get; private set; } = null!;
