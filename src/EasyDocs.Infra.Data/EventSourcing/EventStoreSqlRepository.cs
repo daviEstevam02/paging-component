@@ -13,9 +13,8 @@ public class EventStoreSqlRepository : IEventStoreRepository
         _context = context;
     }
 
-    public async Task<IList<StoredEvent>> GetByAggregateId(Guid aggregateId) 
+    public async Task<IList<StoredEvent>> GetByAggregateId(Guid aggregateId)
         => await (from e in _context.StoredEvent where e.AggregateId == aggregateId select e).ToListAsync();
-    
 
     public async Task<IList<StoredEvent>> GetByEntity(string entity)
         => await (from e in _context.StoredEvent where e.Entity.ToLower() == entity.ToLower() select e).ToListAsync();

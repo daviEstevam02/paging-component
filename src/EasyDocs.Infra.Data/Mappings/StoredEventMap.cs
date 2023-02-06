@@ -16,5 +16,9 @@ public sealed class StoredEventMap : IEntityTypeConfiguration<StoredEvent>
 
         builder.Property(e => e.User)
             .HasColumnName("AppliedBy");
+
+        builder.Property(e => e.Action)
+            .HasConversion<string>()
+            .HasColumnType("varchar(50)");
     }
 }
