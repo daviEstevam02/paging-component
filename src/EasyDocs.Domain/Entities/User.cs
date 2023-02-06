@@ -42,4 +42,5 @@ public sealed class User : Entity
     public Licensee Licensee { get; private set; } = null!;
     public Company Company { get; private set; } = null!;
     public UserType UserType { get; private set; } = null!;
+    public IList<UserDocument> UserDocuments { get; private set; } = null!;
 }

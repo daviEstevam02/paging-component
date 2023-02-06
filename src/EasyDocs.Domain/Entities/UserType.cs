@@ -1,7 +1,6 @@
 ﻿using EasyDocs.Domain.Core.Entities;
 using EasyDocs.Domain.Enums;
 using EasyDocs.Domain.ValueObjects;
-using Microsoft.EntityFrameworkCore.Scaffolding;
 
 namespace EasyDocs.Domain.Entities;
 
@@ -36,4 +35,5 @@ public sealed class UserType : Entity
 
     public Licensee Licensee { get; private set; } = null!;
     public Company Company { get; private set; } = null!;
+    public IList<User> Users { get; private set; } = null!;
 }

@@ -19,4 +19,11 @@ public sealed class Licensee : Entity
     }
 
     public Description Description { get; private set; } = null!;
+
+    public List<Company> Companies { get; private set; } = null!;
+    public List<Document> Documents { get; private set; } = null!;
+    public List<DocumentType> DocumentTypes { get; private set; } = null!;
+    public List<User> User { get; private set; } = null!;
+    public List<UserDocument> UserDocuments { get; private set; } = null!;
+    public List<UserType> UserTypes { get; private set; } = null!;
 }

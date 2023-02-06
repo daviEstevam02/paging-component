@@ -32,4 +32,5 @@ public sealed class DocumentType : Entity
 
     public Company Company { get; private set; } = null!;
     public Licensee Licensee { get; private set; } = null!;
+    public IList<Document> Documents { get; private set; } = null!;
 }
