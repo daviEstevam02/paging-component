@@ -1,6 +1,6 @@
 ﻿using EasyDocs.Domain.Core.ValueObjects;
+using EasyDocs.Domain.Helpers;
 using Flunt.Validations;
-using Gooders.Shared.Domain.Helpers;
 
 namespace EasyDocs.Domain.ValueObjects;
 

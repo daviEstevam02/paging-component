@@ -1,4 +1,4 @@
-﻿namespace Gooders.Shared.Domain.Helpers;
+﻿namespace EasyDocs.Domain.Helpers;
 
 public static class StringHelper
 {
