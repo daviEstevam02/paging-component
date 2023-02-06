@@ -8,8 +8,10 @@ public sealed class Licensee : Entity
     private Licensee() 
     { }
 
-    public Licensee(Guid id, Description description)
-        : base(id)
+    public Licensee(
+        Guid id, 
+        Description description
+        ) : base(id)
     {
         Description = description;
 

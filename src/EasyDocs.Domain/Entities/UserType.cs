@@ -5,18 +5,19 @@ using Microsoft.EntityFrameworkCore.Scaffolding;
 
 namespace EasyDocs.Domain.Entities;
 
-public sealed class UserTypes : Entity
+public sealed class UserType : Entity
 {
-    private UserTypes()
+    private UserType()
     { }
 
-    public UserTypes(
+    public UserType(
+        Guid id,
         Guid licenseeId,
         Guid companyId,
         EErpUsersTypes erpUserType,
         Description description,
         Role roles
-        )
+        ) : base(id)
     {
         LicenseeId = licenseeId;
         CompanyId = companyId;

@@ -9,14 +9,15 @@ public sealed class Company : Entity
     { }
 
     public Company(
+        Guid id,
         Guid licenseeId,
         FantasyName fantasyName,
-        LegalName legalName, 
+        LegalName legalName,
         Address address,
-        Phone contact, 
+        Phone contact,
         CNPJ cnpj,
         bool isHeadquarter
-        )
+        ) : base(id)
     {
         LicenseeId = licenseeId;
         FantasyName = fantasyName;
