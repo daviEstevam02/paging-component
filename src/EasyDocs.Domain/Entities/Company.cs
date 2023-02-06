@@ -8,6 +8,27 @@ public sealed class Company : Entity
     private Company()
     { }
 
+    public Company(
+        Guid licenseeId,
+        FantasyName fantasyName,
+        LegalName legalName, 
+        Address address,
+        Phone contact, 
+        CNPJ cnpj,
+        bool isHeadquarter
+        )
+    {
+        LicenseeId = licenseeId;
+        FantasyName = fantasyName;
+        LegalName = legalName;
+        Address = address;
+        Contact = contact;
+        Cnpj = cnpj;
+        IsHeadquarter = isHeadquarter;
+
+        AddNotifications(FantasyName, LegalName, Address, Contact, Cnpj);
+    }
+
     public Guid LicenseeId { get; private set; }
     public FantasyName FantasyName { get; private set; } = null!;
     public LegalName LegalName { get; private set; } = null!;

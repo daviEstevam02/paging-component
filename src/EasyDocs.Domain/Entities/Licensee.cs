@@ -3,7 +3,7 @@ using EasyDocs.Domain.ValueObjects;
 
 namespace EasyDocs.Domain.Entities;
 
-public sealed class Licensee : BaseEntity
+public sealed class Licensee : Entity
 {
     private Licensee() 
     { }
@@ -12,6 +12,8 @@ public sealed class Licensee : BaseEntity
         : base(id)
     {
         Description = description;
+
+        AddNotifications(Description);
     }
 
     public Description Description { get; private set; } = null!;
