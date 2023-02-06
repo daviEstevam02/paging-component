@@ -2,7 +2,7 @@
 
 public enum EErpUsersTypes
 {
-    Adm = 1,
+    GeneralAdmin = 1,
     Cliente = 2,
     Administradora = 3
 }
