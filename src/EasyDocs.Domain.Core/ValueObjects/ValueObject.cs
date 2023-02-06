@@ -1,4 +1,6 @@
-﻿namespace EasyDocs.Domain.Core.ValueObjects;
+﻿using Flunt.Notifications;
 
-public abstract class ValueObject
+namespace EasyDocs.Domain.Core.ValueObjects;
+
+public abstract class ValueObject : Notifiable<Notification>
 { }

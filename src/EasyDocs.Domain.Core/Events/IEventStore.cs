@@ -1,6 +1,6 @@
-﻿using NetDevPack.Messaging;
+﻿using EasyDocs.Domain.Core.Messaging;
 
-namespace Equinox.Domain.Core.Events;
+namespace EasyDocs.Domain.Core.Events;
 
 public interface IEventStore
 {

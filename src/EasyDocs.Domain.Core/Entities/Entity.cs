@@ -1,13 +1,13 @@
-﻿using NetDevPack.Domain;
+﻿using Flunt.Notifications;
 
 namespace EasyDocs.Domain.Core.Entities;
 
-public abstract class BaseEntity : Entity, IAggregateRoot
+public abstract class Entity : Notifiable<Notification>, IAggregateRoot
 {
-    protected BaseEntity()
+    protected Entity()
     { }
 
-    protected BaseEntity(Guid id)
+    protected Entity(Guid id)
     {
         Id = id;
         Status = EStatus.Active;
@@ -15,6 +15,7 @@ public abstract class BaseEntity : Entity, IAggregateRoot
         UpdatedAt = DateTime.Now.ToLocalTime();
     }
 
+    public Guid Id { get; private set; }
     public EStatus Status { get; protected set; }
     public DateTime CreatedAt { get; protected set; }
     public DateTime UpdatedAt { get; protected set; }
