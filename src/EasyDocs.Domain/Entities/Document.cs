@@ -37,7 +37,7 @@ public sealed class Document : Entity
     public Description Description { get; private set; } = null!;
     public Source Source { get; private set; } = null!;
     public byte[]? File { get; private set; }
-    public bool SpecificAccess { get; set; }
+    public bool SpecificAccess { get; private set; }
 
     public DocumentType DocumentType { get; private set; } = null!;
     public Company Company { get; private set; } = null!;

@@ -1,4 +1,5 @@
-﻿using Flunt.Notifications;
+﻿using EasyDocs.Application.Core;
+using Flunt.Notifications;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gooders.Services.WebApi.Controllers;
@@ -8,11 +9,11 @@ public abstract class ApiController : ControllerBase
 {
     private readonly ICollection<string> _errors = new List<string>();
 
-    protected ActionResult CustomResponse(object? result = null)
+    protected ActionResult CustomResponse(ServiceResponse? result = null)
     {
         if (result!.GetType() == typeof(List<Notification>))
         {
-            var notifications = result as List<Notification>;
+            var notifications = result.Messages as List<Notification>;
             foreach (var error in notifications!)
             {
                 AddError($"{error.Key} | {error.Message}");
@@ -20,7 +21,7 @@ public abstract class ApiController : ControllerBase
         }
 
         if (IsOperationValid())
-            return Ok(result);
+            return Ok(result.Messages);
 
         return BadRequest(new Dictionary<string, string[]>
     {

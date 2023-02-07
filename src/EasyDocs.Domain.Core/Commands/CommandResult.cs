@@ -4,12 +4,12 @@ namespace Gooders.Shared.Core.Commands;
 
 public sealed class CommandResult
 {
-    public CommandResult(bool success, List<Notification> errors)
+    public CommandResult(bool success, object response)
     {
         Success = success;
-        Errors = errors.Any() ? new List<Notification>() : errors;
+        Response ??= response;
     }
 
     public bool Success { get; private set; }
-    public List<Notification> Errors { get; private set; }
+    public object Response { get; private set; } = null;
 }

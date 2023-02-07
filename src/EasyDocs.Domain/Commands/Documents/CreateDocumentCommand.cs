@@ -1,13 +1,10 @@
-﻿using EasyDocs.Domain.Core.Entities;
-using EasyDocs.Domain.ValueObjects;
-using Gooders.Shared.Core.Commands;
+﻿using Gooders.Shared.Core.Commands;
 
 namespace EasyDocs.Domain.Commands.Documents;
 
 public sealed class CreateDocumentCommand : Command
 {
     public CreateDocumentCommand(
-        Guid id, 
         Guid licenseeId, 
         Guid companyId, 
         Guid documentTypeId, 
@@ -18,7 +15,6 @@ public sealed class CreateDocumentCommand : Command
         Guid userId
         )
     {
-        Id = id;
         LicenseeId = licenseeId;
         CompanyId = companyId;
         DocumentTypeId = documentTypeId;
@@ -37,7 +33,7 @@ public sealed class CreateDocumentCommand : Command
     public string Description { get; private set; } = null!;
     public string Source { get; private set; } = null!;
     public byte[]? File { get; private set; }
-    public bool SpecificAccess { get; set; }
+    public bool SpecificAccess { get; private set; }
 
     public override void Validate()
     {

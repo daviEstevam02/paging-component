@@ -1,6 +1,8 @@
-﻿using EasyDocs.Domain.Entities;
+﻿using EasyDocs.Domain.Core.Messaging;
+using EasyDocs.Domain.Entities;
 using EasyDocs.Infra.Data.Extensions;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace EasyDocs.Infra.Data.Context;
 
@@ -12,6 +14,9 @@ public class EasyDocsContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Ignore<ValidationResult>();
+        modelBuilder.Ignore<Event>();
+
         modelBuilder.ConfigureMappings();
         base.OnModelCreating(modelBuilder);
     }

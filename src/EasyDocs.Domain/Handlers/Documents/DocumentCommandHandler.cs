@@ -1,16 +1,16 @@
 ﻿using EasyDocs.Domain.Commands.Documents;
-using EasyDocs.Domain.Core.Handlers;
 using EasyDocs.Domain.Core.Transactions;
 using EasyDocs.Domain.Entities;
 using EasyDocs.Domain.Events.Documents;
 using EasyDocs.Domain.Interfaces;
 using EasyDocs.Domain.ValueObjects;
+using Flunt.Notifications;
 using Gooders.Shared.Core.Commands;
 using MediatR;
 
 namespace EasyDocs.Domain.Handlers.Documents;
 
-public sealed class DocumentCommandHandler : CommandHandler,
+public sealed class DocumentCommandHandler :
     IRequestHandler<CreateDocumentCommand, CommandResult>
 {
     private readonly IDocumentRepository _documentRepository;
@@ -20,7 +20,7 @@ public sealed class DocumentCommandHandler : CommandHandler,
     private readonly IUnitOfWork _unitOfWork;
 
     public DocumentCommandHandler(
-        IDocumentRepository documentRepository, 
+        IDocumentRepository documentRepository,
         ILicenseeRepository licenseeRepository,
         ICompanyRepository companyRepository,
         IUserRepository userRepository,
@@ -49,7 +49,7 @@ public sealed class DocumentCommandHandler : CommandHandler,
         }
 
         var userId = command.UserId;
-        if(!await _userRepository.UserExists(userId))
+        if (!await _userRepository.UserExists(userId))
         {
             command.AddNotification("User", "Um usuário com esse Id não existe.");
             return new CommandResult(false, command.Notifications.ToList());
@@ -61,13 +61,13 @@ public sealed class DocumentCommandHandler : CommandHandler,
         var description = new Description(command.Description);
         var source = new Source(command.Source);
         var document = new Document(
-            Guid.NewGuid(), 
-            command.LicenseeId, 
-            command.CompanyId, 
+            Guid.NewGuid(),
+            command.LicenseeId,
+            command.CompanyId,
             command.DocumentTypeId,
-            description, 
-            source, 
-            command.File, 
+            description,
+            source,
+            command.File,
             command.SpecificAccess
             );
 
@@ -94,6 +94,12 @@ public sealed class DocumentCommandHandler : CommandHandler,
 
         await _documentRepository.Add(document);
 
-        return await Commit(_unitOfWork);
+        if (!await _unitOfWork.Commit())
+        {
+            document.AddNotification("Document", "Erro ao salvar documento.");
+            return new CommandResult(false, document.Notifications.ToList());
+        }
+
+        return new CommandResult(true, "Documento criado com sucesso!");
     }
 }
