@@ -10,4 +10,7 @@ public sealed class UserRepository : BaseRepository<User>, IUserRepository
     public UserRepository(EasyDocsContext context)
         : base(context)
     { }
+
+    public async Task<bool> UserExists(Guid id)
+        => await GetOneWhere(user => user.Id == id) is not null;
 }

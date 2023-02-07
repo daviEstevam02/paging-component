@@ -1,8 +1,9 @@
 ﻿using EasyDocs.Domain.Core.Events;
+using Flunt.Notifications;
 
 namespace EasyDocs.Domain.Core.Messaging;
 
-public abstract class Message
+public abstract class Message : Notifiable<Notification>
 {
     protected Message()
     { }

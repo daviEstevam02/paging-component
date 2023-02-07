@@ -14,6 +14,7 @@ public sealed class User : Entity
         Guid licenseeId, 
         Guid companyId, 
         Guid userTypeId, 
+        string linkCode,
         EDocumentGroup documentGroup, 
         Username username, 
         Email email, 
@@ -23,6 +24,7 @@ public sealed class User : Entity
         LicenseeId = licenseeId;
         CompanyId = companyId;
         UserTypeId = userTypeId;
+        LinkCode = linkCode;
         DocumentGroup = documentGroup;
         Username = username;
         Email = email;
@@ -34,6 +36,7 @@ public sealed class User : Entity
     public Guid LicenseeId { get; private set; }
     public Guid CompanyId { get; private set; }
     public Guid UserTypeId { get; private set; }
+    public string LinkCode { get; set; } = string.Empty;
     public EDocumentGroup DocumentGroup { get; private set; }
     public Username Username { get; private set; } = null!;
     public Email Email { get; private set; } = null!;

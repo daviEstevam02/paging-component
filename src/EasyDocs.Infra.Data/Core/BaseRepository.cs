@@ -17,6 +17,18 @@ public class BaseRepository<T> : IBaseRepository<T> where T : Entity
         _dbSet = _context.Set<T>();
     }
 
+    public async Task<IEnumerable<T>> GetAll()
+        => await _dbSet.ToListAsync();
+
     public async Task<T> GetOneWhere(Expression<Func<T, bool>> condition)
         => (await _dbSet.SingleOrDefaultAsync(condition))!;
+
+    public async Task Add(T entity)
+        => await _dbSet.AddAsync(entity);
+
+    public void Update(Guid id, T entity)
+        => _dbSet.Update(entity);
+
+    public void Delete(T entity)
+        => _dbSet.Remove(entity);
 }

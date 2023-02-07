@@ -3,7 +3,5 @@ using EasyDocs.Domain.Entities;
 
 namespace EasyDocs.Domain.Interfaces;
 
-public interface IUserRepository : IBaseRepository<User>
-{
-    Task<bool> UserExists(Guid id);
-}
+public interface IDocumentRepository : IBaseRepository<Document>
+{ }
