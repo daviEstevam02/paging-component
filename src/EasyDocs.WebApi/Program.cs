@@ -21,6 +21,13 @@ builder.Services.AddSwaggerConfiguration();
 
 var app = builder.Build();
 
+app.UseCors(x =>
+{
+    x.AllowAnyHeader();
+    x.AllowAnyMethod();
+    x.AllowAnyOrigin();
+});
+
 app.UseSwaggerSetup();
 
 app.UseHttpsRedirection();
