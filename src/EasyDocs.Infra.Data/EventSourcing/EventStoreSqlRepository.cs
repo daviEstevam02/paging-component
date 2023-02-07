@@ -1,5 +1,5 @@
 ﻿using EasyDocs.Domain.Core.Events;
-using Equinox.Infra.Data.Context;
+using EasyDocs.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace EasyDocs.Infra.Data.EventSourcing;

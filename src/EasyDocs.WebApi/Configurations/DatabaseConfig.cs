@@ -1,5 +1,4 @@
 ﻿using EasyDocs.Infra.Data.Context;
-using Equinox.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
