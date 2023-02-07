@@ -1,4 +1,6 @@
-﻿namespace EasyDocs.WebApi.Configurations;
+﻿using EasyDocs.Infra.CrossCutting.IoC;
+
+namespace EasyDocs.WebApi.Configurations;
 
 public static class DependencyInjectionConfig
 {
@@ -6,6 +8,6 @@ public static class DependencyInjectionConfig
     {
         if (services is null) throw new ArgumentNullException(nameof(services));
 
-        services.RegisterServices();
+        NativeInjector.RegisterServices(services);
     }
 }

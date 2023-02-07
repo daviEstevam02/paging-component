@@ -9,7 +9,7 @@ namespace EasyDocs.Infra.CrossCutting.IoC;
 
 public static class NativeInjector
 {
-    public static void RegisterServices(this IServiceCollection services)
+    public static void RegisterServices(IServiceCollection services)
     {
         RegisterApplicationServices(services);
         RegisterInfrastructureServices(services);

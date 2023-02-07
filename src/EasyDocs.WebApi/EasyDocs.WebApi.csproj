@@ -40,6 +40,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EasyDocs.Application\EasyDocs.Application.csproj" />
+    <ProjectReference Include="..\EasyDocs.Infra.CrossCutting.IoC\EasyDocs.Infra.CrossCutting.IoC.csproj" />
     <ProjectReference Include="..\EasyDocs.Infra.Data\EasyDocs.Infra.Data.csproj" />
   </ItemGroup>
 

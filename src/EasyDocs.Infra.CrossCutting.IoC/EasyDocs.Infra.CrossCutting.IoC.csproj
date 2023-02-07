@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EasyDocs.Application\EasyDocs.Application.csproj" />
+    <ProjectReference Include="..\EasyDocs.Infra.Data\EasyDocs.Infra.Data.csproj" />
+  </ItemGroup>
+
 </Project>

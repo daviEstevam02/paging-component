@@ -13,6 +13,9 @@ builder.Services.AddDatabaseConfiguration(builder.Configuration);
 // Configuring JWT
 builder.Services.AddJwtConfiguration();
 
+// Configuring Dependency Injection
+builder.Services.AddDependencyInjectionConfiguration();
+
 // Configuring Swagger
 builder.Services.AddSwaggerConfiguration();
 
