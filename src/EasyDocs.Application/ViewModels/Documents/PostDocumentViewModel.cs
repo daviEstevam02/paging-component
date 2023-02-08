@@ -8,6 +8,7 @@ public sealed record PostDocumentViewModel
     public Guid DocumentTypeId { get; set; }
     public string Description { get; set; } = string.Empty;
     public string Source { get; set; } = string.Empty;
+    public DateTime ExpirationDate { get; set; }
     public byte[]? File { get; set; }
     public bool SpecificAccess { get; set; }
 }

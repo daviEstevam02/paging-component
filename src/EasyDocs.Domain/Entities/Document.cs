@@ -10,13 +10,14 @@ public sealed class Document : Entity
     { }
 
     public Document(
-        Guid id, 
-        Guid licenseeId, 
-        Guid companyId, 
-        Guid documentTypeId, 
-        Description description, 
-        Source source, 
-        byte[]? file, 
+        Guid id,
+        Guid licenseeId,
+        Guid companyId,
+        Guid documentTypeId,
+        Description description,
+        Source source,
+        DateTime expirationDate,
+        byte[]? file,
         bool specificAccess
         ) : base(id)
     {
@@ -25,6 +26,7 @@ public sealed class Document : Entity
         DocumentTypeId = documentTypeId;
         Description = description;
         Source = source;
+        ExpirationDate = expirationDate;
         File = file;
         SpecificAccess = specificAccess;
 
@@ -36,6 +38,7 @@ public sealed class Document : Entity
     public Guid DocumentTypeId { get; private set; }
     public Description Description { get; private set; } = null!;
     public Source Source { get; private set; } = null!;
+    public DateTime ExpirationDate { get; private set; }
     public byte[]? File { get; private set; }
     public bool SpecificAccess { get; private set; }
 

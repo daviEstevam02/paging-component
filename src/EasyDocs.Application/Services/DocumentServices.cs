@@ -3,8 +3,8 @@ using EasyDocs.Application.Core;
 using EasyDocs.Application.Interfaces;
 using EasyDocs.Application.ViewModels.Documents;
 using EasyDocs.Domain.Commands.Documents;
+using EasyDocs.Domain.Core.Mediator;
 using EasyDocs.Domain.Interfaces;
-using EasyDocs.Infra.CrossCutting.Bus;
 
 namespace EasyDocs.Application.Services;
 

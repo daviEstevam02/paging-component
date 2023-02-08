@@ -8,9 +8,9 @@ public abstract class Message : Notifiable<Notification>
     protected Message()
     { }
 
-    protected Message(EAction action)
+    protected Message(string entity, EAction action)
     {
-        Entity = GetType().Name;
+        Entity = entity;
         Action = action;
     }
 

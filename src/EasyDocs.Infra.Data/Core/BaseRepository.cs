@@ -1,5 +1,6 @@
 ﻿using EasyDocs.Domain.Core.Entities;
 using EasyDocs.Domain.Core.Interfaces;
+using EasyDocs.Domain.Core.Transactions;
 using EasyDocs.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
@@ -17,14 +18,16 @@ public class BaseRepository<T> : IBaseRepository<T> where T : Entity
         _dbSet = _context.Set<T>();
     }
 
+    public IUnitOfWork UnitOfWork => _context;
+
     public virtual async Task<IEnumerable<T>> GetAll(Expression<Func<T, bool>> condition)
         => await _dbSet.Where(condition).ToListAsync();
 
     public virtual async Task<T> GetOneWhere(Expression<Func<T, bool>> condition)
         => (await _dbSet.SingleOrDefaultAsync(condition))!;
 
-    public virtual async Task Add(T entity)
-        => await _dbSet.AddAsync(entity);
+    public virtual void Add(T entity)
+        => _dbSet.Add(entity);
 
     public virtual void Update(Guid id, T entity)
         => _dbSet.Update(entity);

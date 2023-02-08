@@ -13,10 +13,12 @@ public sealed class DocumentCreatedEvent : Event
         Guid documentTypeId, 
         Description description, 
         Source source, 
+        DateTime expirationDate, 
         byte[]? file, 
         bool specificAccess, 
-        Guid userId
-        ) : base(EAction.Created, userId)
+        Guid userId,
+        string username
+        ) : base(EAction.Created, userId, username, EntitiesContexts.DOCUMENTS)
     {
         AggregateId = id;
         Id = id;
@@ -25,6 +27,7 @@ public sealed class DocumentCreatedEvent : Event
         DocumentTypeId = documentTypeId;
         Description = description;
         Source = source;
+        ExpirationDate = expirationDate;
         File = file;
         SpecificAccess = specificAccess;
     }
@@ -35,6 +38,7 @@ public sealed class DocumentCreatedEvent : Event
     public Guid DocumentTypeId { get; private set; }
     public Description Description { get; private set; } = null!;
     public Source Source { get; private set; } = null!;
+    public DateTime ExpirationDate { get; private set; }
     public byte[]? File { get; private set; }
     public bool SpecificAccess { get; private set; }
 }

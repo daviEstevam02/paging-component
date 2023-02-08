@@ -1,6 +1,5 @@
 ﻿using EasyDocs.Application.Interfaces;
 using EasyDocs.Application.ViewModels.Companies;
-using Gooders.Services.WebApi.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

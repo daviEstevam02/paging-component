@@ -2,7 +2,7 @@
 using Flunt.Notifications;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Gooders.Services.WebApi.Controllers;
+namespace EasyDocs.WebApi.Controllers;
 
 [ApiController]
 public abstract class ApiController : ControllerBase

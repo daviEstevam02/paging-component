@@ -1,7 +1,6 @@
 ﻿using EasyDocs.Domain.Core.ValueObjects;
 using Flunt.Extensions.Br.Validations;
 using Flunt.Validations;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace EasyDocs.Domain.ValueObjects;
 

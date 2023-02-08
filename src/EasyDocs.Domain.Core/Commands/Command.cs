@@ -1,7 +1,7 @@
 ﻿using EasyDocs.Domain.Core.Messaging;
 using MediatR;
 
-namespace Gooders.Shared.Core.Commands;
+namespace EasyDocs.Domain.Core.Commands;
 
 public abstract class Command : Message, IRequest<CommandResult>, IBaseRequest
 {

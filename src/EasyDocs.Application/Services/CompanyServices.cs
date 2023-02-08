@@ -3,8 +3,8 @@ using EasyDocs.Application.Core;
 using EasyDocs.Application.Interfaces;
 using EasyDocs.Application.ViewModels.Companies;
 using EasyDocs.Domain.Commands.Companies;
+using EasyDocs.Domain.Core.Mediator;
 using EasyDocs.Domain.Interfaces;
-using EasyDocs.Infra.CrossCutting.Bus;
 
 namespace EasyDocs.Application.Services;
 
@@ -22,7 +22,8 @@ public sealed class CompanyServices : ICompanyServices
     }
 
     public async Task<IEnumerable<ResponseCompanyViewModel>> GetAll(Guid licenseeId)
-       => _mapper.Map<IEnumerable<ResponseCompanyViewModel>>(await _companyRepository.GetAll(c => c.LicenseeId == licenseeId));
+       => _mapper.Map<IEnumerable<ResponseCompanyViewModel>>
+        (await _companyRepository.GetAll(c => c.LicenseeId == licenseeId));
 
     public async Task<ServiceResponse> Create(PostCompanyViewModel viewModel)
     {

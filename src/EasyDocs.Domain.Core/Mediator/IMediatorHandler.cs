@@ -1,7 +1,7 @@
-﻿using EasyDocs.Domain.Core.Messaging;
-using Gooders.Shared.Core.Commands;
+﻿using EasyDocs.Domain.Core.Commands;
+using EasyDocs.Domain.Core.Messaging;
 
-namespace EasyDocs.Infra.CrossCutting.Bus;
+namespace EasyDocs.Domain.Core.Mediator;
 
 public interface IMediatorHandler
 {

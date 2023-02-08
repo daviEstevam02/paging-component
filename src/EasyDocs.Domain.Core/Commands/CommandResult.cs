@@ -1,6 +1,6 @@
 ﻿using Flunt.Notifications;
 
-namespace Gooders.Shared.Core.Commands;
+namespace EasyDocs.Domain.Core.Commands;
 
 public sealed class CommandResult
 {

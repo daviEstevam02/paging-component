@@ -2,7 +2,9 @@
 using EasyDocs.Application.Services;
 using EasyDocs.Domain.Commands.Companies;
 using EasyDocs.Domain.Commands.Documents;
+using EasyDocs.Domain.Core.Commands;
 using EasyDocs.Domain.Core.Events;
+using EasyDocs.Domain.Core.Mediator;
 using EasyDocs.Domain.Core.Transactions;
 using EasyDocs.Domain.Events.Companies;
 using EasyDocs.Domain.Events.Documents;
@@ -13,12 +15,8 @@ using EasyDocs.Infra.CrossCutting.Bus;
 using EasyDocs.Infra.Data.Context;
 using EasyDocs.Infra.Data.EventSourcing;
 using EasyDocs.Infra.Data.Repositories;
-using EasyDocs.Infra.Data.Transactions;
-using Flunt.Notifications;
-using Gooders.Shared.Core.Commands;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using System.ComponentModel.DataAnnotations;
 
 namespace EasyDocs.Infra.CrossCutting.IoC;
 
@@ -42,7 +40,6 @@ public static class NativeInjector
     {
         // Infra - Data
         services.AddScoped<EasyDocsContext>();
-        services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         // Infra - Repositories
         services.AddScoped<ILicenseeRepository, LicenseeRepository>();

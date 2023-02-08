@@ -1,6 +1,6 @@
-﻿using Flunt.Extensions.Br.Validations;
+﻿using EasyDocs.Domain.Core.Commands;
+using Flunt.Extensions.Br.Validations;
 using Flunt.Validations;
-using Gooders.Shared.Core.Commands;
 
 namespace EasyDocs.Domain.Commands.Companies;
 
@@ -64,7 +64,7 @@ public sealed class CreateCompanyCommand : Command
     {
         AddNotifications(new Contract<CreateCompanyCommand>()
             .Requires()
-            .IsCnpj(Number, "CreateCompanyCommand.CNPJ", "CNPJ inválido.")
+            .IsCnpj(Cnpj, "CreateCompanyCommand.CNPJ", "CNPJ inválido.")
             );
     }
     #endregion

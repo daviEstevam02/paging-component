@@ -7,16 +7,14 @@ public class StoredEvent : Event
     protected StoredEvent() 
     { }
 
-    public StoredEvent(Event theEvent, string user) 
-        : base(theEvent.Action, theEvent.UserId)
+    public StoredEvent(Event theEvent) 
+        : base(theEvent.Action, theEvent.UserId, theEvent.Username, theEvent.Entity)
     {
         Id = Guid.NewGuid();
         AggregateId = theEvent.AggregateId;
-        User = user;
     }
 
     public Guid Id { get; private set; }
-    public string User { get; private set; } = string.Empty;
 }
 
 public enum EAction

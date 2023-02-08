@@ -1,6 +1,7 @@
-﻿using EasyDocs.Domain.Core.Events;
+﻿using EasyDocs.Domain.Core.Commands;
+using EasyDocs.Domain.Core.Events;
+using EasyDocs.Domain.Core.Mediator;
 using EasyDocs.Domain.Core.Messaging;
-using Gooders.Shared.Core.Commands;
 using MediatR;
 
 namespace EasyDocs.Infra.CrossCutting.Bus;

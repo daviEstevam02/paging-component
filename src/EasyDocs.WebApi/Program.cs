@@ -1,13 +1,10 @@
 using EasyDocs.WebApi.Configurations;
-using Gooders.Services.WebApi.Configuration.Swagger;
+using EasyDocs.WebApi.Configurations.Swagger;
 using MediatR;
-using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers()
-    .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
-;
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

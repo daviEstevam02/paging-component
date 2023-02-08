@@ -3,7 +3,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 
-namespace Gooders.Services.WebApi.Configuration.Swagger;
+namespace EasyDocs.WebApi.Configurations.Swagger;
 
 public static class SwaggerConfig
 {

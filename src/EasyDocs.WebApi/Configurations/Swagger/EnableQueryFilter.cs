@@ -1,7 +1,7 @@
 ﻿using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace Gooders.Services.WebApi.Configuration.Swagger;
+namespace EasyDocs.WebApi.Configurations.Swagger;
 
 public class EnableQueryFilter : IOperationFilter
 {

@@ -67,7 +67,7 @@ public sealed class Address : ValueObject
             .Requires()
             .IsNotNullOrEmpty(State, "Address.State", "O estado não deve ser vazio.")
             .IsNotNullOrWhiteSpace(State, "Address.State", "O estado não deve ser vazio.")
-            .AreNotEquals(2, State.Length, "Address.State", "O estado deve conter 2 caracteres.")
+            .AreEquals(2, State.Length, "Address.State", "O estado deve conter 2 caracteres.")
             );
     }
 
@@ -112,7 +112,7 @@ public sealed class Address : ValueObject
           .IsNotNullOrWhiteSpace(Number, "Address.Number", "O número não deve ser vazio.")
           .IsLowerOrEqualsThan(2, Number.Length, "Address.Number", "O número não deve conter menos de 3 caracteres.")
           .IsGreaterOrEqualsThan(10, Number.Length, "Address.Number", "O número não deve conter mais de 10 caracteres.")
-          .IsFalse(Number.IsNumeric(), "Address.Number", "O número só deve conter caracteres numéricos.")
+          .IsTrue(Number.IsNumeric(), "Address.Number", "O número só deve conter caracteres numéricos.")
           );
     }
 

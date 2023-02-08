@@ -14,11 +14,13 @@ public sealed class StoredEventMap : IEntityTypeConfiguration<StoredEvent>
         builder.Property(e => e.Entity)
             .HasColumnName("Context");
 
-        builder.Property(e => e.User)
+        builder.Property(e => e.Username)
             .HasColumnName("AppliedBy");
 
         builder.Property(e => e.Action)
             .HasConversion<string>()
             .HasColumnType("varchar(50)");
+
+        builder.Ignore(e => e.Notifications);
     }
 }

@@ -1,5 +1,5 @@
-﻿using Flunt.Validations;
-using Gooders.Shared.Core.Commands;
+﻿using EasyDocs.Domain.Core.Commands;
+using Flunt.Validations;
 
 namespace EasyDocs.Domain.Commands.Documents;
 
@@ -11,6 +11,7 @@ public sealed class CreateDocumentCommand : Command
         Guid documentTypeId, 
         string description,
         string source, 
+        DateTime expirationDate,
         byte[]? file, 
         bool specificAccess,
         Guid userId
@@ -33,6 +34,7 @@ public sealed class CreateDocumentCommand : Command
     public Guid DocumentTypeId { get; private set; }
     public string Description { get; private set; }
     public string Source { get; private set; }
+    public DateTime ExpirationDate { get; private set; }
     public byte[]? File { get; private set; }
     public bool SpecificAccess { get; private set; }
 

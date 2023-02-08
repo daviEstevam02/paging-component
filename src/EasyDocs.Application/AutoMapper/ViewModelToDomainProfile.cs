@@ -18,6 +18,7 @@ public sealed class ViewModelToDomainProfile : Profile
                 viewModel.DocumentTypeId,
                 viewModel.Description,
                 viewModel.Source,
+                viewModel.ExpirationDate,
                 viewModel.File,
                 viewModel.SpecificAccess,
                 viewModel.UserId)
