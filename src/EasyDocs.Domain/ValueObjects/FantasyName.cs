@@ -1,5 +1,6 @@
 ﻿using EasyDocs.Domain.Core.ValueObjects;
 using Flunt.Validations;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace EasyDocs.Domain.ValueObjects;
 
@@ -22,4 +23,6 @@ public sealed class FantasyName : ValueObject
     }
 
     public string Name { get; private set; } = string.Empty;
+
+    public override string ToString() => Name;
 }

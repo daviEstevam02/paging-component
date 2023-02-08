@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations
-using EasyDocs.Domain.Core.Events;
+﻿using EasyDocs.Domain.Core.Events;
 using EasyDocs.Domain.Core.Messaging;
 using Gooders.Shared.Core.Commands;
 using MediatR;

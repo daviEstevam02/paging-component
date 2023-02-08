@@ -17,18 +17,18 @@ public class BaseRepository<T> : IBaseRepository<T> where T : Entity
         _dbSet = _context.Set<T>();
     }
 
-    public async Task<IEnumerable<T>> GetAll()
-        => await _dbSet.ToListAsync();
+    public virtual async Task<IEnumerable<T>> GetAll(Expression<Func<T, bool>> condition)
+        => await _dbSet.Where(condition).ToListAsync();
 
-    public async Task<T> GetOneWhere(Expression<Func<T, bool>> condition)
+    public virtual async Task<T> GetOneWhere(Expression<Func<T, bool>> condition)
         => (await _dbSet.SingleOrDefaultAsync(condition))!;
 
-    public async Task Add(T entity)
+    public virtual async Task Add(T entity)
         => await _dbSet.AddAsync(entity);
 
-    public void Update(Guid id, T entity)
+    public virtual void Update(Guid id, T entity)
         => _dbSet.Update(entity);
 
-    public void Delete(T entity)
+    public virtual void Delete(T entity)
         => _dbSet.Remove(entity);
 }

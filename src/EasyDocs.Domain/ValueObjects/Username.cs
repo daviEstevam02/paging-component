@@ -1,5 +1,6 @@
 ﻿using EasyDocs.Domain.Core.ValueObjects;
 using Flunt.Validations;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace EasyDocs.Domain.ValueObjects;
 
@@ -20,5 +21,7 @@ public sealed class Username : ValueObject
             );
     }
 
-    public string Nickname { get; private set; } = string.Empty;    
+    public string Nickname { get; private set; } = string.Empty;
+
+    public override string ToString() => Nickname;
 }

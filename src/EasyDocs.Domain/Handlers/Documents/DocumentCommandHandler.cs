@@ -4,7 +4,6 @@ using EasyDocs.Domain.Entities;
 using EasyDocs.Domain.Events.Documents;
 using EasyDocs.Domain.Interfaces;
 using EasyDocs.Domain.ValueObjects;
-using Flunt.Notifications;
 using Gooders.Shared.Core.Commands;
 using MediatR;
 

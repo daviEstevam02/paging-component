@@ -4,13 +4,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EasyDocs.Infra.Data.Context;
 
-public class EventStoreSqlContext : DbContext
+public sealed class EventStoreSqlContext : DbContext
 {
     public EventStoreSqlContext(DbContextOptions<EventStoreSqlContext> options)
         : base(options)
     { }
-
-    public DbSet<StoredEvent> StoredEvent { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -18,4 +16,6 @@ public class EventStoreSqlContext : DbContext
 
         base.OnModelCreating(modelBuilder);
     }
+
+    public DbSet<StoredEvent> StoredEvent { get; set; }
 }

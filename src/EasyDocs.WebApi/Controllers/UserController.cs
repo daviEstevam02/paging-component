@@ -18,7 +18,7 @@ public sealed class UserController : ApiController
     }
 
     /// <summary>
-    /// Realiza o login do usuário, retornando o token Bearer (JWT) se obter sucesso.
+    /// Realiza o login do usuário, retornando o token Bearer (JWT) se obter sucesso ou uma mensagem de erro caso haja falha.
     /// </summary>
     /// <remarks>
     /// </remarks>

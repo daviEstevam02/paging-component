@@ -20,5 +20,7 @@ public sealed class CNPJ : ValueObject
             );
     }
 
-    public string Number { get; private set; } = string.Empty;  
+    public string Number { get; private set; } = string.Empty;
+
+    public override string ToString() => Number;
 }

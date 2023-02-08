@@ -1,7 +1,5 @@
-﻿using EasyDocs.Domain.Core.Entities;
-using EasyDocs.Domain.Core.Events;
+﻿using EasyDocs.Domain.Core.Events;
 using EasyDocs.Domain.Core.Messaging;
-using EasyDocs.Domain.Entities;
 using EasyDocs.Domain.ValueObjects;
 
 namespace EasyDocs.Domain.Events.Documents;

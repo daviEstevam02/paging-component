@@ -1,5 +1,6 @@
 ﻿using EasyDocs.Domain.Core.ValueObjects;
 using Flunt.Validations;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace EasyDocs.Domain.ValueObjects;
 
@@ -22,4 +23,6 @@ public sealed class Description : ValueObject
     }
 
     public string Text { get; private set; } = string.Empty;
+
+    public override string ToString() => Text;
 }

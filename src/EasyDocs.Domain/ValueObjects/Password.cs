@@ -1,6 +1,7 @@
 ﻿using EasyDocs.Domain.Core.ValueObjects;
 using EasyDocs.Domain.Helpers;
 using Flunt.Validations;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace EasyDocs.Domain.ValueObjects;
 
@@ -27,4 +28,6 @@ public sealed class Password : ValueObject
         && PasswordTyped.HasLowerCase()
         && PasswordTyped.HasSpecialChar()
         && PasswordTyped.HasNumber();
+
+    public override string ToString() => PasswordTyped;
 }

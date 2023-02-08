@@ -22,4 +22,6 @@ public sealed class Source : ValueObject
     }
 
     public string Text { get; private set; } = string.Empty;
+
+    public override string ToString() => Text;
 }

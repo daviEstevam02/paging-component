@@ -1,5 +1,6 @@
 ﻿using EasyDocs.Domain.Core.ValueObjects;
 using Flunt.Validations;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace EasyDocs.Domain.ValueObjects;
 
@@ -20,4 +21,6 @@ public sealed class Email : ValueObject
     }
 
     public string Address { get; private set; } = string.Empty;
+
+    public override string ToString() => Address;
 }

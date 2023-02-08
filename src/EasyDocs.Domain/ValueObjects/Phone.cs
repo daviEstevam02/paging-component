@@ -1,6 +1,7 @@
 ﻿using EasyDocs.Domain.Core.ValueObjects;
 using Flunt.Extensions.Br.Validations;
 using Flunt.Validations;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace EasyDocs.Domain.ValueObjects;
 
@@ -20,4 +21,6 @@ public sealed class Phone : ValueObject
     }
 
     public string Number { get; private set; } = string.Empty;
+
+    public override string ToString() => Number;
 }
