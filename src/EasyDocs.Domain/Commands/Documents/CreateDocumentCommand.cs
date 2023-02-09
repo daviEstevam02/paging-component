@@ -22,12 +22,12 @@ public sealed class CreateDocumentCommand : Command
         DocumentTypeId = documentTypeId;
         Description = description;
         Source = source;
+        ExpirationDate = expirationDate;
         File = file;
         SpecificAccess = specificAccess;
         UserId = userId;
     }
 
-    public Guid UserId { get; private set; }
     public Guid Id { get; private set; }
     public Guid LicenseeId { get; private set; }
     public Guid CompanyId { get; private set; }

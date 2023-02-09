@@ -39,7 +39,6 @@ public sealed class CreateCompanyCommand : Command
         UserId = userId;
     }
 
-    public Guid UserId { get; private set; }
     public Guid LicenseeId { get; private set; }
     public string FantasyName { get; private set; }
     public string LegalName { get; private set; }

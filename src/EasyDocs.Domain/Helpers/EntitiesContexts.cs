@@ -1,4 +1,4 @@
-﻿namespace EasyDocs.Domain.Events;
+﻿namespace EasyDocs.Domain.Helpers;
 
 internal static class EntitiesContexts
 {

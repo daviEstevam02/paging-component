@@ -1,5 +1,6 @@
 ﻿using EasyDocs.Domain.Core.Events;
 using EasyDocs.Domain.Core.Messaging;
+using EasyDocs.Domain.Helpers;
 using EasyDocs.Domain.ValueObjects;
 
 namespace EasyDocs.Domain.Events.Companies;
