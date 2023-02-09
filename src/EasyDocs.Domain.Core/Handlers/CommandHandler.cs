@@ -1,10 +1,11 @@
 ﻿using EasyDocs.Domain.Core.Commands;
+using EasyDocs.Domain.Core.Entities;
 using EasyDocs.Domain.Core.Transactions;
 using Flunt.Notifications;
 
 namespace EasyDocs.Domain.Core.Handlers;
 
-public class CommandHandler<T> : Notifiable<Notification> where T : CommandHandler<T>
+public class CommandHandler<T> : Notifiable<Notification> where T : Entity
 {
     protected async Task<CommandResult> Commit(IUnitOfWork uow, string successMessage, string message)
     {

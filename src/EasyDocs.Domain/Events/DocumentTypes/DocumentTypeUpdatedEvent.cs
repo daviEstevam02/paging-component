@@ -6,17 +6,17 @@ using EasyDocs.Domain.ValueObjects;
 
 namespace EasyDocs.Domain.Events.DocumentTypes;
 
-public sealed class DocumentTypedCreatedEvent : Event
+public sealed class DocumentTypeUpdatedEvent : Event
 {
-    public DocumentTypedCreatedEvent(
-        Guid id, 
-        Guid licenseeId, 
-        Guid companyId, 
-        EDocumentGroup documentGroup, 
-        Description description,
-        Guid userId,
-        string username
-        ) : base(EAction.Created, userId, username, EntitiesContexts.DOCUMENT_TYPES)
+    public DocumentTypeUpdatedEvent(
+     Guid id,
+     Guid licenseeId,
+     Guid companyId,
+     EDocumentGroup documentGroup,
+     Description description,
+     Guid userId,
+     string username
+     ) : base(EAction.Updated, userId, username, EntitiesContexts.DOCUMENT_TYPES)
     {
         AggregateId = id;
         Id = id;
@@ -30,5 +30,5 @@ public sealed class DocumentTypedCreatedEvent : Event
     public Guid LicenseeId { get; private set; }
     public Guid CompanyId { get; private set; }
     public EDocumentGroup DocumentGroup { get; private set; }
-    public Description Description { get; private set; } = null!;
+    public Description Description { get; private set; }
 }

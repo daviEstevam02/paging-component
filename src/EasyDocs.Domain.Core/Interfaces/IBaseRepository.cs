@@ -12,5 +12,4 @@ public interface IBaseRepository<T> where T : Entity
     Task<T> GetOneWhere(Expression<Func<T, bool>> condition);
     void Add(T entity);
     void Update(Guid id, T entity);
-    void Delete(T entity);
 }

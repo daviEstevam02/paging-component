@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EasyDocs.WebApi.Controllers;
 
-[Route("companies")]
 [Authorize]
+[Route("companies")]
 public sealed class CompanyController : ApiController
 {
     private readonly ICompanyServices _companyServices;

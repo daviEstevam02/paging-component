@@ -25,9 +25,24 @@ public abstract class Entity : Notifiable<Notification>, IAggregateRoot
 
     public IReadOnlyCollection<Event> DomainEvents => _domainEvents?.AsReadOnly()!;
 
-    protected void Activate() => Status = EStatus.Active;
-    protected void Deactivate() => Status = EStatus.Inactive;
-    protected void Update() => UpdatedAt = DateTime.Now.ToLocalTime();
+    public void Activate()
+    {
+        if (IsValid) Status = EStatus.Active;
+    }
+
+    public void Deactivate()
+    {
+        if (IsValid) Status = EStatus.Inactive;
+    }
+
+    public void Update(DateTime createdAt)
+    {
+        if (IsValid)
+        {
+            CreatedAt = createdAt;
+            UpdatedAt = DateTime.Now.ToLocalTime();
+        }
+    }
 
     public void AddDomainEvent(Event domainEvent)
     {

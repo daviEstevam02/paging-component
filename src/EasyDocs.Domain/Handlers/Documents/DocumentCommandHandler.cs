@@ -9,7 +9,7 @@ using MediatR;
 
 namespace EasyDocs.Domain.Handlers.Documents;
 
-public sealed class DocumentCommandHandler : CommandHandler<DocumentCommandHandler>,
+public sealed class DocumentCommandHandler : CommandHandler<Document>,
     IRequestHandler<CreateDocumentCommand, CommandResult>
 {
     private readonly IDocumentRepository _documentRepository;

@@ -9,7 +9,7 @@ using MediatR;
 
 namespace EasyDocs.Domain.Handlers.Companies;
 
-public sealed class CompanyCommandHandler : CommandHandler<CompanyCommandHandler>,
+public sealed class CompanyCommandHandler : CommandHandler<Company>,
     IRequestHandler<CreateCompanyCommand, CommandResult>
 {
     private readonly ILicenseeRepository _licenseeRepository;

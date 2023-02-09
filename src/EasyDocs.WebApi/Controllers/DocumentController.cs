@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EasyDocs.WebApi.Controllers;
 
-[Route("documents")]
 [Authorize]
+[Route("documents")]
 public sealed class DocumentController : ApiController
 {
     private readonly IDocumentServices _documentServices;

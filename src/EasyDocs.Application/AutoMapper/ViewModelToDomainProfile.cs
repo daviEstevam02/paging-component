@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using EasyDocs.Application.ViewModels.Companies;
 using EasyDocs.Application.ViewModels.Documents;
+using EasyDocs.Application.ViewModels.DocumentTypes;
 using EasyDocs.Domain.Commands.Companies;
 using EasyDocs.Domain.Commands.Documents;
+using EasyDocs.Domain.Commands.DocumentTypes;
 
 namespace EasyDocs.Application.AutoMapper;
 
@@ -43,6 +45,33 @@ public sealed class ViewModelToDomainProfile : Profile
                 viewModel.IsHeadquarter,
                 viewModel.UserId)
             );
+        #endregion
+
+        #region DocumentTypes
+        CreateMap<PostDocumentTypeViewModel, CreateDocumentTypeCommand>()
+           .ConstructUsing(viewModel => new CreateDocumentTypeCommand(
+               viewModel.LicenseeId,
+               viewModel.CompanyId,
+               viewModel.DocumentGroup,
+               viewModel.Description,
+               viewModel.UserId)
+           );
+
+        CreateMap<PutDocumentTypeViewModel, UpdateDocumentTypeCommand>()
+           .ConstructUsing(viewModel => new UpdateDocumentTypeCommand(
+               viewModel.Id,
+               viewModel.LicenseeId,
+               viewModel.CompanyId,
+               viewModel.DocumentGroup,
+               viewModel.Description,
+               viewModel.UserId)
+           );
+
+        CreateMap<DeleteDocumentTypeViewModel, DeleteDocumentTypeCommand>()
+          .ConstructUsing(viewModel => new DeleteDocumentTypeCommand(
+              viewModel.Id,
+              viewModel.UserId)
+          );
         #endregion
     }
 }

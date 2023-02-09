@@ -4,16 +4,18 @@ using Flunt.Validations;
 
 namespace EasyDocs.Domain.Commands.DocumentTypes;
 
-public sealed class CreateDocumentTypeCommand : Command
+public sealed class UpdateDocumentTypeCommand : Command
 {
-    public CreateDocumentTypeCommand(
+    public UpdateDocumentTypeCommand(
+        Guid id,
         Guid licenseeId,
-        Guid companyId, 
+        Guid companyId,
         EDocumentGroup documentGroup,
         string description,
         Guid userId
         )
     {
+        Id = id;
         LicenseeId = licenseeId;
         CompanyId = companyId;
         DocumentGroup = documentGroup;

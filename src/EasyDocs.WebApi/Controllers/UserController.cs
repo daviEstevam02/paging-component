@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EasyDocs.WebApi.Controllers;
 
-[Route("users")]
 [Authorize]
+[Route("users")]
 public sealed class UserController : ApiController
 {
     private readonly IUserServices _userServices;
