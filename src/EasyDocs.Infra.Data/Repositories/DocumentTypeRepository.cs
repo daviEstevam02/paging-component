@@ -12,6 +12,9 @@ public sealed class DocumentTypeRepository : BaseRepository<DocumentType>, IDocu
     public DocumentTypeRepository(EasyDocsContext context) : base(context)
     { }
 
+    public async Task<bool> DocumentTypeExists(Guid id)
+        => await _dbSet.SingleOrDefaultAsync(dt => dt.Id == id) is not null;
+
     public override async Task<DocumentType> GetOneWhere(Expression<Func<DocumentType, bool>> condition)
         => (await _dbSet
         .Include(dt => dt.Company)

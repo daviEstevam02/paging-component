@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using EasyDocs.Application.Helper;
 using EasyDocs.Application.ViewModels.Companies;
 using EasyDocs.Application.ViewModels.Documents;
 using EasyDocs.Application.ViewModels.DocumentTypes;
@@ -21,10 +22,30 @@ public sealed class ViewModelToDomainProfile : Profile
                 viewModel.Description,
                 viewModel.Source,
                 viewModel.ExpirationDate,
+                FormFileExtensions.GetBytes(viewModel.File),
+                viewModel.SpecificAccess,
+                viewModel.UserId)
+            );
+
+        CreateMap<PutDocumentViewModel, UpdateDocumentCommand>()
+            .ConstructUsing(viewModel => new UpdateDocumentCommand(
+                viewModel.Id,
+                viewModel.LicenseeId,
+                viewModel.CompanyId,
+                viewModel.DocumentTypeId,
+                viewModel.Description,
+                viewModel.Source,
+                viewModel.ExpirationDate,
                 viewModel.File,
                 viewModel.SpecificAccess,
                 viewModel.UserId)
             );
+
+        CreateMap<DeleteDocumentViewModel, DeleteDocumentCommand>()
+           .ConstructUsing(viewModel => new DeleteDocumentCommand(
+               viewModel.Id,
+               viewModel.UserId)
+           );
         #endregion
 
         #region Companies

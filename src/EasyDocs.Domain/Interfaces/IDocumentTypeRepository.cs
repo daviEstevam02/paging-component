@@ -4,4 +4,6 @@ using EasyDocs.Domain.Entities;
 namespace EasyDocs.Domain.Interfaces;
 
 public interface IDocumentTypeRepository : IBaseRepository<DocumentType>
-{ }
+{
+    Task<bool> DocumentTypeExists(Guid id);
+}

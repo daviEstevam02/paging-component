@@ -21,10 +21,32 @@ public sealed class DocumentServices : IDocumentServices
         _mediator = mediator;
     }
 
+    public async Task<IEnumerable<ResponseAllDocumentViewModel>> GetAll(Guid companyId)
+        => _mapper.Map<IEnumerable<ResponseAllDocumentViewModel>>
+        (await _documentRepository.GetAll(d => d.CompanyId == companyId));
+
+    public async Task<ResponseOneDocumentViewModel> GetById(Guid documentId)
+     => _mapper.Map<ResponseOneDocumentViewModel>
+        (await _documentRepository.GetOneWhere(d => d.Id == documentId));
+
     public async Task<ServiceResponse> Create(PostDocumentViewModel viewModel)
     {
         var createCommand = _mapper.Map<CreateDocumentCommand>(viewModel);
         var commandResult = await _mediator.SendCommand(createCommand);
+        return new ServiceResponse(commandResult.Success, commandResult.Response);
+    }
+
+    public async Task<ServiceResponse> Update(PutDocumentViewModel viewModel)
+    {
+        var updateCommand = _mapper.Map<CreateDocumentCommand>(viewModel);
+        var commandResult = await _mediator.SendCommand(updateCommand);
+        return new ServiceResponse(commandResult.Success, commandResult.Response);
+    }
+
+    public async Task<ServiceResponse> Delete(DeleteDocumentViewModel viewModel)
+    {
+        var deleteCommand = _mapper.Map<CreateDocumentCommand>(viewModel);
+        var commandResult = await _mediator.SendCommand(deleteCommand);
         return new ServiceResponse(commandResult.Success, commandResult.Response);
     }
 }

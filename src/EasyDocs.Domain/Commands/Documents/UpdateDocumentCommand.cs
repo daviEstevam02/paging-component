@@ -3,20 +3,22 @@ using Flunt.Validations;
 
 namespace EasyDocs.Domain.Commands.Documents;
 
-public sealed class CreateDocumentCommand : Command
+public sealed class UpdateDocumentCommand : Command
 {
-    public CreateDocumentCommand(
-        Guid licenseeId, 
-        Guid companyId, 
-        Guid documentTypeId, 
+    public UpdateDocumentCommand(
+        Guid id,
+        Guid licenseeId,
+        Guid companyId,
+        Guid documentTypeId,
         string description,
-        string source, 
+        string source,
         DateTime expirationDate,
-        byte[]? file, 
+        byte[]? file,
         bool specificAccess,
         Guid userId
-        )
+       )
     {
+        Id = id;
         LicenseeId = licenseeId;
         CompanyId = companyId;
         DocumentTypeId = documentTypeId;
@@ -28,6 +30,7 @@ public sealed class CreateDocumentCommand : Command
         UserId = userId;
     }
 
+    public Guid Id { get; private set; }
     public Guid LicenseeId { get; private set; }
     public Guid CompanyId { get; private set; }
     public Guid DocumentTypeId { get; private set; }

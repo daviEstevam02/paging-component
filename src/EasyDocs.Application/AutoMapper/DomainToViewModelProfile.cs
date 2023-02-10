@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using EasyDocs.Application.ViewModels.Companies;
+using EasyDocs.Application.ViewModels.Documents;
 using EasyDocs.Application.ViewModels.DocumentTypes;
 using EasyDocs.Application.ViewModels.Licensees;
 using EasyDocs.Domain.Entities;
@@ -27,6 +28,12 @@ public sealed class DomainToViewModelProfile : Profile
 
         #region DocumentTypes
         CreateMap<DocumentType, ResponseDocumentTypeViewModel>();
+        CreateMap<DocumentType, ResponseDocumentTypeDocumentViewModel>();
+        #endregion
+
+        #region Documents
+        CreateMap<Document, ResponseAllDocumentViewModel>();
+        CreateMap<Document, ResponseOneDocumentViewModel>();
         #endregion
     }
 }

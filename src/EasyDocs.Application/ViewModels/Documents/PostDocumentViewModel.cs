@@ -1,4 +1,6 @@
-﻿namespace EasyDocs.Application.ViewModels.Documents;
+﻿using Microsoft.AspNetCore.Http;
+
+namespace EasyDocs.Application.ViewModels.Documents;
 
 public sealed record PostDocumentViewModel
 {
@@ -9,6 +11,6 @@ public sealed record PostDocumentViewModel
     public string Description { get; set; } = string.Empty;
     public string Source { get; set; } = string.Empty;
     public DateTime ExpirationDate { get; set; }
-    public byte[]? File { get; set; }
+    public IFormFile? File { get; set; }
     public bool SpecificAccess { get; set; }
 }

@@ -8,6 +8,6 @@ public static class AutoMapperConfig
     {
         if(services is null) throw new ArgumentNullException(nameof(services));
 
-        services.AddAutoMapper(typeof(DomainToViewModelProfile), typeof(ViewModelToDomainProfile));
+        services.AddAutoMapper(typeof(DomainToViewModelProfile), typeof(ViewModelToDomainProfile), typeof(GeneralMappingProfile));
     }
 }

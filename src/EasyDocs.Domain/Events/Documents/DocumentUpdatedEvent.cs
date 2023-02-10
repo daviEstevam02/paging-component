@@ -5,21 +5,21 @@ using EasyDocs.Domain.ValueObjects;
 
 namespace EasyDocs.Domain.Events.Documents;
 
-public sealed class DocumentCreatedEvent : Event
+public sealed class DocumentUpdatedEvent : Event
 {
-    public DocumentCreatedEvent(
-        Guid id, 
-        Guid licenseeId, 
-        Guid companyId, 
-        Guid documentTypeId, 
-        Description description, 
-        Source source, 
-        DateTime expirationDate, 
-        byte[]? file, 
-        bool specificAccess, 
-        Guid userId,
-        string username
-        ) : base(EAction.Created, userId, username, EntitiesContexts.DOCUMENTS)
+    public DocumentUpdatedEvent(
+       Guid id,
+       Guid licenseeId,
+       Guid companyId,
+       Guid documentTypeId,
+       Description description,
+       Source source,
+       DateTime expirationDate,
+       byte[]? file,
+       bool specificAccess,
+       Guid userId,
+       string username
+       ) : base(EAction.Updated, userId, username, EntitiesContexts.DOCUMENTS)
     {
         AggregateId = id;
         Id = id;
