@@ -2,10 +2,10 @@
 using EasyDocs.Domain.Core.Commands;
 using EasyDocs.Domain.Core.Handlers;
 using EasyDocs.Domain.Entities;
+using EasyDocs.Domain.Events.DocumentTypes;
 using EasyDocs.Domain.Events.UserDocuments;
 using EasyDocs.Domain.Interfaces;
 using MediatR;
-using System.Xml.Linq;
 
 namespace EasyDocs.Domain.Handlers.UserDocuments;
 
@@ -137,8 +137,34 @@ public sealed class UserDocumentCommandHandler : CommandHandler<UserDocument>,
 
     }
 
-    public Task<CommandResult> Handle(DeleteUserDocumentCommand request, CancellationToken cancellationToken)
+    public async Task<CommandResult> Handle(DeleteUserDocumentCommand command, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var existentUserDocument = await _userDocumentRepository.GetOneWhere(dt => dt.Id == command.Id);
+        if (existentUserDocument is null)
+        {
+            AddNotification("UserDocument", "Um tipo de documento usuário com esse Id não existe.");
+            return new CommandResult(false, Notifications.ToList());
+        }
+
+        var user = await _userRepository.GetOneWhere(u => u.Id == command.UserId);
+        if (user is null)
+        {
+            AddNotification("User", "Um usuário com esse Id não existe.");
+            return new CommandResult(false, Notifications.ToList());
+        }
+
+        command.Validate();
+        if (!command.IsValid) return new CommandResult(false, command.Notifications.ToList());
+
+        existentUserDocument.Deactivate();
+
+        if (!existentUserDocument.IsValid) return new CommandResult(false, existentUserDocument.Notifications.ToList());
+
+        existentUserDocument.AddDomainEvent(new DocumentTypeDeletedEvent(existentUserDocument.Id, user.Id, user.Username.ToString()!));
+
+        _userDocumentRepository.Update(existentUserDocument.Id, existentUserDocument);
+
+        return await Commit(_userDocumentRepository.UnitOfWork, "Tipo de documento usuário deletado com sucesso!");
+
     }
 }
