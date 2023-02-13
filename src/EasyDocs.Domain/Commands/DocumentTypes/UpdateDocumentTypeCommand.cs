@@ -37,7 +37,7 @@ public sealed class UpdateDocumentTypeCommand : Command
 
     public void ValidateDescription()
     {
-        AddNotifications(new Contract<CreateDocumentTypeCommand>()
+        AddNotifications(new Contract<UpdateDocumentTypeCommand>()
             .Requires()
             .IsNotNullOrEmpty(Description, "CreateDocumentTypeCommand.Description", "A descrição não pode ser vazia.")
             .IsNotNullOrWhiteSpace(Description, "CreateDocumentTypeCommand.Description", "A descrição não pode ser vazia.")

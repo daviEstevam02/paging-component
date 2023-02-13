@@ -23,9 +23,9 @@ public sealed class DeleteDocumentCommand : Command
 
     public void ValidateId()
     {
-        AddNotifications(new Contract<DeleteDocumentTypeCommand>()
+        AddNotifications(new Contract<DeleteDocumentCommand>()
             .Requires()
-            .IsTrue(Id != Guid.Empty, "DeleteDocumentTypeCommand.Id", "O código do tipo de documento não pode ser vazio.")
+            .IsTrue(Id != Guid.Empty, "DeleteDocumentCommand.Id", "O código do documento não pode ser vazio.")
             );
     }
     #endregion
