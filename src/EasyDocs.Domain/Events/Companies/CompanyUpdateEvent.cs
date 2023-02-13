@@ -1,55 +1,42 @@
-﻿using EasyDocs.Domain.Core.Commands;
+﻿using EasyDocs.Domain.Core.Events;
+using EasyDocs.Domain.Core.Messaging;
+using EasyDocs.Domain.Helpers;
 using EasyDocs.Domain.ValueObjects;
-using Flunt.Validations;
 
-namespace EasyDocs.Domain.Commands.Companies;
+namespace EasyDocs.Domain.Events.Companies;
 
-public sealed class UpdateCompanyCommand : Command
+public sealed class CompanyUpdateEvent : Event
 {
-    public UpdateCompanyCommand(
-        Guid id, 
-        Guid licensseId, 
+    public CompanyUpdateEvent(
+        Guid id,
+        Guid licenseeId, 
         FantasyName fantasyName, 
         LegalName legalName, 
         Address address, 
         Phone contact, 
         CNPJ cnpj, 
         bool isHeadquarter,
-        Guid userId
-        )
+        Guid userId,
+        string username
+        ) : base(EAction.Updated, userId, username, EntitiesContexts.COMPANIES)
     {
         Id = id;
-        LicensseId = licensseId;
+        AggregateId = id;
+        LicenseeId = licenseeId;
         FantasyName = fantasyName;
         LegalName = legalName;
         Address = address;
         Contact = contact;
         Cnpj = cnpj;
         IsHeadquarter = isHeadquarter;
-        UserId = userId;
     }
 
     public Guid Id { get; private set; }
-    public Guid LicensseId { get; private set; }
+    public Guid LicenseeId { get; private set; }
     public FantasyName FantasyName { get; private set; } = null!;
     public LegalName LegalName { get; private set; } = null!;
     public Address Address { get; private set; } = null!;
     public Phone Contact { get; private set; } = null!;
     public CNPJ Cnpj { get; private set; } = null!;
     public bool IsHeadquarter { get; private set; }
-
-
-    #region Fail Fast Validations
-    public override void Validate()
-    {
-        ValidateIsHeadquarter();
-    }
-
-    public void ValidateIsHeadquarter()
-    {
-        AddNotifications(new Contract<UpdateCompanyCommand>()
-            .Requires()
-            );
-    }
-    #endregion
 }
