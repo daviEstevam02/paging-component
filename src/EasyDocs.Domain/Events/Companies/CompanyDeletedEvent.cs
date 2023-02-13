@@ -17,6 +17,5 @@ namespace EasyDocs.Domain.Events.Companies
             AggregateId = id;
       }
         public Guid Id { get; private set; }
-
     }
 }

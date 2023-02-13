@@ -1,5 +1,4 @@
 ﻿using EasyDocs.Application.Core;
-using EasyDocs.Application.ViewModels.Companies;
 using EasyDocs.Application.ViewModels.DocumentTypes;
 
 namespace EasyDocs.Application.Interfaces;
