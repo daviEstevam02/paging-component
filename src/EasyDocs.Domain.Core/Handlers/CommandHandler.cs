@@ -10,9 +10,7 @@ public class CommandHandler<T> : Notifiable<Notification> where T : Entity
     protected async Task<CommandResult> Commit(IUnitOfWork uow, string successMessage, string message)
     {
         if (!await uow.Commit())
-        {
-            AddNotification(nameof(T), message);
-        }
+            AddNotification(nameof(T), message);        
 
         if (!IsValid)
             return new CommandResult(false, Notifications);

@@ -38,14 +38,14 @@ public sealed class DocumentServices : IDocumentServices
 
     public async Task<ServiceResponse> Update(PutDocumentViewModel viewModel)
     {
-        var updateCommand = _mapper.Map<CreateDocumentCommand>(viewModel);
+        var updateCommand = _mapper.Map<UpdateDocumentCommand>(viewModel);
         var commandResult = await _mediator.SendCommand(updateCommand);
         return new ServiceResponse(commandResult.Success, commandResult.Response);
     }
 
     public async Task<ServiceResponse> Delete(DeleteDocumentViewModel viewModel)
     {
-        var deleteCommand = _mapper.Map<CreateDocumentCommand>(viewModel);
+        var deleteCommand = _mapper.Map<DeleteDocumentCommand>(viewModel);
         var commandResult = await _mediator.SendCommand(deleteCommand);
         return new ServiceResponse(commandResult.Success, commandResult.Response);
     }

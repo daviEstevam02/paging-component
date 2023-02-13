@@ -33,7 +33,7 @@ public sealed class DocumentCreatedEvent : Event
         SpecificAccess = specificAccess;
     }
 
-    public Guid Id { get; set; }
+    public Guid Id { get; private set; }
     public Guid LicenseeId { get; private set; }
     public Guid CompanyId { get; private set; }
     public Guid DocumentTypeId { get; private set; }
