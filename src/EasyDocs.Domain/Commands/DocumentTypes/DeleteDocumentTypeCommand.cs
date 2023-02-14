@@ -5,12 +5,8 @@ namespace EasyDocs.Domain.Commands.DocumentTypes;
 
 public sealed class DeleteDocumentTypeCommand : Command
 {
-    public DeleteDocumentTypeCommand(Guid id, Guid userId)
-    {
-        Id = id;
-        AggregateId = id;
-        UserId = userId;
-    }
+    public DeleteDocumentTypeCommand(Guid id, Guid userId) =>
+       (Id, userId, AggregateId) = (id, userId, id);
 
     public Guid Id { get; private set; }
 

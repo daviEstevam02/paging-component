@@ -5,12 +5,9 @@ namespace EasyDocs.Domain.Commands.Companies;
 
 public sealed class DeleteCompanyCommand : Command
 {
-    public DeleteCompanyCommand(Guid id, Guid userId )
-    {
-        Id= id;
-        AggregateId = id;
-        UserId= userId;
-    }
+    public DeleteCompanyCommand(Guid id, Guid userId ) =>
+        (Id, userId, AggregateId) = (id, userId,id);
+   
     public Guid Id { get; private set; }
 
     #region Fail Fast Validations
