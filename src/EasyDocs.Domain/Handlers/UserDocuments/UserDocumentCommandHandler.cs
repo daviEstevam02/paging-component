@@ -19,9 +19,6 @@ public sealed class UserDocumentCommandHandler : CommandHandler<UserDocument>,
     private readonly ICompanyRepository _companyRepository;
     private readonly IUserRepository _userRepository;
     private readonly IUserDocumentRepository _userDocumentRepository;
-
-
-
     public UserDocumentCommandHandler(
         ILicenseeRepository licenseeRepository,
         ICompanyRepository companyRepository,
@@ -56,6 +53,7 @@ public sealed class UserDocumentCommandHandler : CommandHandler<UserDocument>,
         }
 
         command.Validate();
+
         if (!command.IsValid) return new CommandResult(false, command.Notifications.ToList());
 
         var userDocument = new UserDocument(

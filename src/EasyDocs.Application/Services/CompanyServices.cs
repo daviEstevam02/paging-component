@@ -31,4 +31,22 @@ public sealed class CompanyServices : ICompanyServices
         var commandResult = await _mediator.SendCommand(createCommand);
         return new ServiceResponse(commandResult.Success, commandResult.Response);
     }
+
+    public async Task<ResponseCompanyViewModel> GetById(Guid companyId)
+    => _mapper.Map<ResponseCompanyViewModel>
+        (await _companyRepository.GetOneWhere(d => d.Id == companyId));
+
+    public async Task<ServiceResponse> Update(PutCompanyViewModel viewModel)
+    {
+        var updateCommand = _mapper.Map<UpdateCompanyCommand>(viewModel);
+        var commandResult = await _mediator.SendCommand(updateCommand);
+        return new ServiceResponse(commandResult.Success, commandResult.Response);
+    }
+
+    public async Task<ServiceResponse> Delete(DeleteCompanyViewModel viewModel)
+    {
+        var deleteCommand = _mapper.Map<DeleteCompanyCommand>(viewModel);
+        var commandResult = await _mediator.SendCommand(deleteCommand);
+        return new ServiceResponse(commandResult.Success, commandResult.Response);
+    }
 }
