@@ -2,6 +2,6 @@
 
 public sealed class DeleteUserDocumentViewModel
 {
-    public Guid UserId { get; private set; }
-    public Guid Id { get; private set; }
+    public Guid UserId { get; set; }
+    public Guid Id { get; set; }
 }

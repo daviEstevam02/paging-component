@@ -2,7 +2,7 @@
 {
     public sealed class PutCompanyViewModel
     {
-        public Guid Id { get; set; }
+        public Guid Id { get;  set; }
         public Guid UserId { get; set; }
         public Guid LicenseeId { get; set; }
         public string FantasyName { get; set; } = string.Empty;
