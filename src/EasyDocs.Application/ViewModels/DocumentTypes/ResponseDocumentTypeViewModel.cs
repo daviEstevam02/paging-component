@@ -4,11 +4,11 @@ namespace EasyDocs.Application.ViewModels.DocumentTypes;
 
 public sealed class ResponseDocumentTypeViewModel
 {
-    public Guid Id { get; set; }
-    public ResponseCompanyViewModel Company { get; set; }
-    public string DocumentGroup { get; set; }
-    public string Description { get; set; }
-    public DateTime CreatedAt { get; set; }
-    public string UpdatedAt { get; set; }
-    public string Status { get; set; }
+    public Guid Id { get; private set; }
+    public ResponseCompanyViewModel Company { get; private set; }
+    public string DocumentGroup { get; private set; }
+    public string Description { get; private set; }
+    public DateTime CreatedAt { get; private set; }
+    public string UpdatedAt { get; private set; }
+    public string Status { get; private set; }
 }
