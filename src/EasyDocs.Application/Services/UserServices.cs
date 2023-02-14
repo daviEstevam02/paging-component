@@ -10,11 +10,8 @@ public sealed class UserServices : IUserServices
 {
     private readonly IUserRepository _userRepository;
 
-    public UserServices(IUserRepository userRepository)
-    {
-        _userRepository = userRepository;
-    }
-
+    public UserServices(IUserRepository userRepository) => (_userRepository) = (userRepository);
+  
     public async Task<ServiceResponse> Login(string email, string password)
     {
         if (email.IsEmpty()) return new ServiceResponse(false, "Email inválido.");

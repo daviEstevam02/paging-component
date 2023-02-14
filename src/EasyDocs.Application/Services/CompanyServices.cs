@@ -14,12 +14,10 @@ public sealed class CompanyServices : ICompanyServices
     private readonly ICompanyRepository _companyRepository;
     private readonly IMediatorHandler _mediator;
 
-    public CompanyServices(IMapper mapper, ICompanyRepository companyRepository, IMediatorHandler mediator)
-    {
-        _mapper = mapper;
-        _companyRepository = companyRepository;
-        _mediator = mediator;
-    }
+    public CompanyServices(IMapper mapper, 
+        ICompanyRepository companyRepository, 
+        IMediatorHandler mediator) => (_mapper, _companyRepository, _mediator) = (mapper, companyRepository, mediator); 
+   
 
     public async Task<IEnumerable<ResponseCompanyViewModel>> GetAll(Guid licenseeId)
        => _mapper.Map<IEnumerable<ResponseCompanyViewModel>>

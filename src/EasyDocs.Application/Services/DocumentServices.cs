@@ -14,12 +14,10 @@ public sealed class DocumentServices : IDocumentServices
     private readonly IDocumentRepository _documentRepository;
     private readonly IMediatorHandler _mediator;
 
-    public DocumentServices(IMapper mapper, IDocumentRepository documentRepository, IMediatorHandler mediator)
-    {
-        _mapper = mapper;
-        _documentRepository = documentRepository;
-        _mediator = mediator;
-    }
+    public DocumentServices(
+        IMapper mapper,
+        IDocumentRepository documentRepository,
+        IMediatorHandler mediator) => (_mapper, _documentRepository, _mediator) = (mapper, documentRepository, mediator);
 
     public async Task<IEnumerable<ResponseAllDocumentViewModel>> GetAll(Guid companyId)
         => _mapper.Map<IEnumerable<ResponseAllDocumentViewModel>>

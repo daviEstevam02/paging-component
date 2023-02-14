@@ -19,11 +19,7 @@ public sealed class UserDocumentServices : IUserDocumentServices
         IUserDocumentRepository userDocumentRepository,
         IMediatorHandler mediator)
 
-    {
-        _mapper = mapper;
-        _userDocumentRepository = userDocumentRepository;
-        _mediator = mediator;
-    }
+    => (_mapper, _userDocumentRepository, _mediator) = (mapper, userDocumentRepository, mediator);
 
     public async Task<IEnumerable<ResponseUserDocumentViewModel>> GetAll(Guid companyId)
     => _mapper.Map<IEnumerable<ResponseUserDocumentViewModel>>
