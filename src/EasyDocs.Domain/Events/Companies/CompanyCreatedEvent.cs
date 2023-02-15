@@ -18,7 +18,8 @@ public sealed class CompanyCreatedEvent : Event
         bool isHeadquarter,
         Guid userId,
         string username
-        ) : base(EAction.Created, userId, username, EntitiesContexts.COMPANIES)
+        )  
+        : base(EAction.Created, userId, username, EntitiesContexts.COMPANIES)
     {
         AggregateId = id;
         Id = id;
