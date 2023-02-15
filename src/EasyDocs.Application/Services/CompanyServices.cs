@@ -14,12 +14,10 @@ public sealed class CompanyServices : ICompanyServices
     private readonly ICompanyRepository _companyRepository;
     private readonly IMediatorHandler _mediator;
 
-    public CompanyServices(IMapper mapper, ICompanyRepository companyRepository, IMediatorHandler mediator)
-    {
-        _mapper = mapper;
-        _companyRepository = companyRepository;
-        _mediator = mediator;
-    }
+    public CompanyServices(IMapper mapper, 
+        ICompanyRepository companyRepository, 
+        IMediatorHandler mediator) => (_mapper, _companyRepository, _mediator) = (mapper, companyRepository, mediator); 
+   
 
     public async Task<IEnumerable<ResponseCompanyViewModel>> GetAll(Guid licenseeId)
        => _mapper.Map<IEnumerable<ResponseCompanyViewModel>>
@@ -29,6 +27,24 @@ public sealed class CompanyServices : ICompanyServices
     {
         var createCommand = _mapper.Map<CreateCompanyCommand>(viewModel);
         var commandResult = await _mediator.SendCommand(createCommand);
+        return new ServiceResponse(commandResult.Success, commandResult.Response);
+    }
+
+    public async Task<ResponseCompanyViewModel> GetById(Guid companyId)
+    => _mapper.Map<ResponseCompanyViewModel>
+        (await _companyRepository.GetOneWhere(d => d.Id == companyId));
+
+    public async Task<ServiceResponse> Update(PutCompanyViewModel viewModel)
+    {
+        var updateCommand = _mapper.Map<UpdateCompanyCommand>(viewModel);
+        var commandResult = await _mediator.SendCommand(updateCommand);
+        return new ServiceResponse(commandResult.Success, commandResult.Response);
+    }
+
+    public async Task<ServiceResponse> Delete(DeleteCompanyViewModel viewModel)
+    {
+        var deleteCommand = _mapper.Map<DeleteCompanyCommand>(viewModel);
+        var commandResult = await _mediator.SendCommand(deleteCommand);
         return new ServiceResponse(commandResult.Success, commandResult.Response);
     }
 }

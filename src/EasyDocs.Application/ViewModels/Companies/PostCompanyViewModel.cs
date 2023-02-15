@@ -1,8 +1,8 @@
 ﻿namespace EasyDocs.Application.ViewModels.Companies;
 
-public sealed record PostCompanyViewModel
+public sealed class PostCompanyViewModel
 {
-    public Guid UserId { get; set; }
+    public Guid UserId { get;  set; }
     public Guid LicenseeId { get; set; }
     public string FantasyName { get; set; } = string.Empty;
     public string LegalName { get; set; } = string.Empty;

@@ -19,14 +19,9 @@ public sealed class CompanyCommandHandler : CommandHandler<Company>,
     public CompanyCommandHandler(
         ILicenseeRepository licenseeRepository,
         ICompanyRepository companyRepository,
-        IUserRepository userRepository
-        )
-    {
-        _licenseeRepository = licenseeRepository;
-        _companyRepository = companyRepository;
-        _userRepository = userRepository;
-    }
-
+        IUserRepository userRepository) =>
+        (_licenseeRepository, _companyRepository, _userRepository) = (licenseeRepository, companyRepository, userRepository);
+    
     public async Task<CommandResult> Handle(CreateCompanyCommand command, CancellationToken cancellationToken)
     {
         if (!await _licenseeRepository.LicenseeExists(command.LicenseeId))

@@ -5,24 +5,23 @@ using EasyDocs.Domain.ValueObjects;
 
 namespace EasyDocs.Domain.Events.Companies;
 
-public sealed class CompanyCreatedEvent : Event
+public sealed class CompanyUpdateEvent : Event
 {
-    public CompanyCreatedEvent(
+    public CompanyUpdateEvent(
         Guid id,
         Guid licenseeId, 
         FantasyName fantasyName, 
         LegalName legalName, 
-        Address address,
-        Phone contact,
-        CNPJ cnpj,
+        Address address, 
+        Phone contact, 
+        CNPJ cnpj, 
         bool isHeadquarter,
         Guid userId,
         string username
-        )  
-        : base(EAction.Created, userId, username, EntitiesContexts.COMPANIES)
+        ) : base(EAction.Updated, userId, username, EntitiesContexts.COMPANIES)
     {
-        AggregateId = id;
         Id = id;
+        AggregateId = id;
         LicenseeId = licenseeId;
         FantasyName = fantasyName;
         LegalName = legalName;
@@ -34,10 +33,10 @@ public sealed class CompanyCreatedEvent : Event
 
     public Guid Id { get; private set; }
     public Guid LicenseeId { get; private set; }
-    public FantasyName FantasyName { get; private set; }
-    public LegalName LegalName { get; private set; }
-    public Address Address { get; private set; }
-    public Phone Contact { get; private set; }
-    public CNPJ Cnpj { get; private set; }
+    public FantasyName FantasyName { get; private set; } = null!;
+    public LegalName LegalName { get; private set; } = null!;
+    public Address Address { get; private set; } = null!;
+    public Phone Contact { get; private set; } = null!;
+    public CNPJ Cnpj { get; private set; } = null!;
     public bool IsHeadquarter { get; private set; }
 }

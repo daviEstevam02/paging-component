@@ -2,11 +2,11 @@
 using EasyDocs.Domain.Core.Commands;
 using Flunt.Validations;
 
-namespace EasyDocs.Domain.Commands.Documents;
+namespace EasyDocs.Domain.Commands.UserDocuments;
 
-public sealed class DeleteDocumentCommand : Command
+public sealed class DeleteUserDocumentCommand : Command
 {
-    public DeleteDocumentCommand(Guid id, Guid userId) =>
+    public DeleteUserDocumentCommand(Guid id, Guid userId) =>
         (Id, userId, AggregateId) = (id, userId, id);
 
     public Guid Id { get; private set; }
@@ -19,9 +19,9 @@ public sealed class DeleteDocumentCommand : Command
 
     public void ValidateId()
     {
-        AddNotifications(new Contract<DeleteDocumentCommand>()
+        AddNotifications(new Contract<DeleteDocumentTypeCommand>()
             .Requires()
-            .IsTrue(Id != Guid.Empty, "DeleteDocumentCommand.Id", "O código do documento não pode ser vazio.")
+            .IsTrue(Id != Guid.Empty, "DeleteDocumentTypeCommand.Id", "O código do tipo de documento não pode ser vazio.")
             );
     }
     #endregion

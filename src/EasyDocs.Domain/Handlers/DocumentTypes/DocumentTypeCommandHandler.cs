@@ -24,14 +24,10 @@ public sealed class DocumentTypeCommandHandler : CommandHandler<DocumentType>,
         ILicenseeRepository licenseeRepository,
         ICompanyRepository companyRepository,
         IUserRepository userRepository
-        )
-    {
-        _documentTypeRepository = documentTypeRepository;
-        _licenseeRepository = licenseeRepository;
-        _companyRepository = companyRepository;
-        _userRepository = userRepository;
-    }
-
+        ) => (_documentTypeRepository, _licenseeRepository, _companyRepository, _userRepository)
+        =
+        (documentTypeRepository, licenseeRepository, companyRepository, userRepository);
+ 
     public async Task<CommandResult> Handle(CreateDocumentTypeCommand command, CancellationToken cancellationToken)
     {
         if (!await _licenseeRepository.LicenseeExists(command.LicenseeId))

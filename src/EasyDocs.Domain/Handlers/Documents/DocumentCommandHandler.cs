@@ -27,14 +27,11 @@ public sealed class DocumentCommandHandler : CommandHandler<Document>,
         ILicenseeRepository licenseeRepository,
         ICompanyRepository companyRepository,
         IUserRepository userRepository
-        )
-    {
-        _documentRepository = documentRepository;
-        _documentTypeRepository = documentTypeRepository;
-        _licenseeRepository = licenseeRepository;
-        _companyRepository = companyRepository;
-        _userRepository = userRepository;
-    }
+        ) =>
+        (_documentRepository, _documentTypeRepository, _licenseeRepository, _companyRepository, _userRepository)
+        = 
+        (documentRepository, documentTypeRepository, licenseeRepository, _companyRepository, _userRepository);
+   
 
     public async Task<CommandResult> Handle(CreateDocumentCommand command, CancellationToken cancellationToken)
     {

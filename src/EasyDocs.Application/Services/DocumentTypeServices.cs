@@ -15,11 +15,7 @@ public sealed class DocumentTypeServices : IDocumentTypeServices
     private readonly IMediatorHandler _mediator;
 
     public DocumentTypeServices(IMapper mapper, IDocumentTypeRepository documentTypeRepository, IMediatorHandler mediator)
-    {
-        _mapper = mapper;
-        _documentTypeRepository = documentTypeRepository;
-        _mediator = mediator;
-    }
+    => (_mapper, _documentTypeRepository, _mediator) = (mapper, documentTypeRepository, mediator);
 
     public async Task<IEnumerable<ResponseDocumentTypeViewModel>> GetAll(Guid companyId)
         => _mapper.Map<IEnumerable<ResponseDocumentTypeViewModel>>

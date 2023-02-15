@@ -2,9 +2,9 @@
 
 namespace EasyDocs.Application.ViewModels.Companies;
 
-public sealed record ResponseCompanyViewModel
+public sealed class ResponseCompanyViewModel
 {
-    public Guid Id { get; set; }
+    public Guid Id { get;  set; }
     public ResponseLicenseeViewModel Licensee { get; set; } = null!;
     public string FantasyName { get; set; } = string.Empty;
     public string LegalName { get; set; } = string.Empty;
