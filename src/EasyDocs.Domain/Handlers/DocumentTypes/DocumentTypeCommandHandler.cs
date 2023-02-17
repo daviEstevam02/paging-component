@@ -32,20 +32,20 @@ public sealed class DocumentTypeCommandHandler : CommandHandler<DocumentType>,
     {
         if (!await _licenseeRepository.LicenseeExists(command.LicenseeId))
         {
-            AddNotification("Licensee", "Um licenciado com esse Id não existe.");
+            AddNotification("Licensee", $"Um licenciado com o Id {command.LicenseeId} não existe.");
             return new CommandResult(false, Notifications.ToList());
         }
 
         if (!await _companyRepository.CompanyExists(command.CompanyId))
         {
-            AddNotification("Empresa", "Uma empresa com esse Id não existe.");
+            AddNotification("Company", $"Uma empresa com o Id {command.CompanyId} não existe.");
             return new CommandResult(false, Notifications.ToList());
         }
 
         var user = await _userRepository.GetOneWhere(u => u.Id == command.UserId);
         if (user is null)
         {
-            AddNotification("User", "Um usuário com esse Id não existe.");
+            AddNotification("User", $"Um usuário com o Id {command.UserId} não existe.");
             return new CommandResult(false, Notifications.ToList());
         }
 
@@ -102,7 +102,7 @@ public sealed class DocumentTypeCommandHandler : CommandHandler<DocumentType>,
 
         if (!await _companyRepository.CompanyExists(command.CompanyId))
         {
-            AddNotification("Empresa", "Uma empresa com esse Id não existe.");
+            AddNotification("Company", "Uma empresa com esse Id não existe.");
             return new CommandResult(false, Notifications.ToList());
         }
 

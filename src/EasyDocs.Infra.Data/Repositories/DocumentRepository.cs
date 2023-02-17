@@ -16,6 +16,7 @@ public sealed class DocumentRepository : BaseRepository<Document>, IDocumentRepo
     public override async Task<IEnumerable<Document>> GetAll(Expression<Func<Document, bool>> condition)
         => await _dbSet
         .Include(d => d.Company)
+        .ThenInclude(c => c.Licensee)
         .Include(d => d.DocumentType)
         .Where(condition)
         .ToListAsync();
@@ -23,6 +24,7 @@ public sealed class DocumentRepository : BaseRepository<Document>, IDocumentRepo
     public override async Task<Document> GetOneWhere(Expression<Func<Document, bool>> condition)
         => (await _dbSet
         .Include(d => d.Company)
+        .ThenInclude(c => c.Licensee)
         .Include(d => d.DocumentType)
         .SingleOrDefaultAsync(condition))!;
 }

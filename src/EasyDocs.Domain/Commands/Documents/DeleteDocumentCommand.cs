@@ -1,5 +1,4 @@
-﻿using EasyDocs.Domain.Commands.DocumentTypes;
-using EasyDocs.Domain.Core.Commands;
+﻿using EasyDocs.Domain.Core.Commands;
 using Flunt.Validations;
 
 namespace EasyDocs.Domain.Commands.Documents;
@@ -7,7 +6,7 @@ namespace EasyDocs.Domain.Commands.Documents;
 public sealed class DeleteDocumentCommand : Command
 {
     public DeleteDocumentCommand(Guid id, Guid userId) =>
-        (Id, userId, AggregateId) = (id, userId, id);
+        (Id, UserId, AggregateId) = (id, userId, id);
 
     public Guid Id { get; private set; }
 

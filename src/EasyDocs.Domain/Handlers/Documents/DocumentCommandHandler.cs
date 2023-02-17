@@ -49,7 +49,7 @@ public sealed class DocumentCommandHandler : CommandHandler<Document>,
 
         if (!await _companyRepository.CompanyExists(command.CompanyId))
         {
-            AddNotification("Empresa", "Uma empresa com esse Id não existe.");
+            AddNotification("Company", "Uma empresa com esse Id não existe.");
             return new CommandResult(false, Notifications.ToList());
         }
 

@@ -35,6 +35,8 @@ public static class NativeInjector
         services.AddScoped<IUserServices, UserServices>();
         services.AddScoped<IDocumentServices, DocumentServices>();
         services.AddScoped<IDocumentTypeServices, DocumentTypeServices>();
+        services.AddScoped<IUserDocumentServices, UserDocumentServices>();
+        services.AddScoped<IUserTypeServices, UserTypeServices>();
     }
 
     private static void RegisterInfrastructureServices(IServiceCollection services)
@@ -48,6 +50,8 @@ public static class NativeInjector
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IDocumentRepository, DocumentRepository>();
         services.AddScoped<IDocumentTypeRepository, DocumentTypeRepository>();
+        services.AddScoped<IUserDocumentRepository, UserDocumentRepository>();
+        services.AddScoped<IUserTypeRepository, UserTypeRepository>();
 
         // Infra - Data EventSourcing
         services.AddScoped<EventStoreSqlContext>();
