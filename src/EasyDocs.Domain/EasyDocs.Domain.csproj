@@ -28,4 +28,8 @@
     <ProjectReference Include="..\EasyDocs.Domain.Core\EasyDocs.Domain.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Commands\UserTypes\" />
+  </ItemGroup>
+
 </Project>

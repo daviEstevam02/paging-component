@@ -1,6 +1,6 @@
 ﻿using EasyDocs.Domain.Core.Commands;
 using EasyDocs.Domain.Enums;
-using EasyDocs.Domain.ValueObjects;
+using Flunt.Validations;
 
 namespace EasyDocs.Domain.Commands.Users;
 
@@ -43,7 +43,24 @@ public sealed class UpdateUserCommand : Command
     #region Fail Fast Validations
     public override void Validate()
     {
-        throw new NotImplementedException();
+        ValidateEmail();
+        ValidatePassword();
     }
+
+    public void ValidateEmail()
+        => AddNotifications(new Contract<CreateUserCommand>()
+            .Requires()
+            .IsNotEmail(Email, "CreateUserCommand.Email", "Email inválido.")
+            .IsGreaterOrEqualsThan(100, Email.Length, "CreateUserCommand.Email", "O email não deve conter mais de 100 caracteres.")
+            );
+
+    public void ValidatePassword()
+        => AddNotifications(new Contract<CreateUserCommand>()
+            .Requires()
+            .IsNotNullOrWhiteSpace(Password, "CreateUserCommand.Password", "A senha não deve ser vazia.")
+            .IsNotNullOrEmpty(Password, "CreateUserCommand.Password", "A senha não deve ser vazia.")
+            .IsLowerThan(6, Password.Length, "CreateUserCommand.Password", "A senha deve conter mais de 6 caracteres.")
+            .IsGreaterThan(16, Password.Length, "CreateUserCommand.Password", "A senha deve conter menos de 16 caracteres.")
+            );
     #endregion
 }

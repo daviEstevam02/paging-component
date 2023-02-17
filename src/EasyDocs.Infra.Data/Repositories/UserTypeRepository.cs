@@ -24,4 +24,7 @@ public sealed class UserTypeRepository : BaseRepository<UserType>, IUserTypeRepo
         .Include(ut => ut.Company)
         .ThenInclude(c => c.Licensee)
         .SingleOrDefaultAsync(condition))!;
+
+    public async Task<bool> UserTypeExists(Guid userTypeId)
+        => await _dbSet.SingleOrDefaultAsync(u => u.Id == userTypeId) is not null;
 }

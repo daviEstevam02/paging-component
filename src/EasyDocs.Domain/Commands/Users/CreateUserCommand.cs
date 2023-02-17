@@ -1,10 +1,63 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EasyDocs.Domain.Core.Commands;
+using EasyDocs.Domain.Enums;
+using Flunt.Validations;
 
 namespace EasyDocs.Domain.Commands.Users;
-internal class CreateUserCommand
+
+public sealed class CreateUserCommand : Command
 {
+    public CreateUserCommand(
+        Guid licenseeId, 
+        Guid companyId, 
+        Guid userTypeId, 
+        string linkCode, 
+        EDocumentGroup documentGroup, 
+        string username, 
+        string email, 
+        string password,
+        Guid userId)
+    {
+        UserId = userId;
+        LicenseeId = licenseeId;
+        CompanyId = companyId;
+        UserTypeId = userTypeId;
+        LinkCode = linkCode;
+        DocumentGroup = documentGroup;
+        Username = username;
+        Email = email;
+        Password = password;
+    }
+
+    public Guid LicenseeId { get; private set; }
+    public Guid CompanyId { get; private set; }
+    public Guid UserTypeId { get; private set; }
+    public string LinkCode { get; private set; } = string.Empty;
+    public EDocumentGroup DocumentGroup { get; private set; }
+    public string Username { get; private set; } = string.Empty;
+    public string Email { get; private set; } = string.Empty;
+    public string Password { get; private set; } = string.Empty;
+
+    #region Fail Fast Validations
+    public override void Validate()
+    {
+        ValidateEmail();
+        ValidatePassword();
+    }
+
+    public void ValidateEmail()
+        => AddNotifications(new Contract<CreateUserCommand>()
+            .Requires()
+            .IsNotEmail(Email, "CreateUserCommand.Email", "Email inválido.")
+            .IsGreaterOrEqualsThan(100, Email.Length, "CreateUserCommand.Email", "O email não deve conter mais de 100 caracteres.")
+            );
+
+    public void ValidatePassword()
+        => AddNotifications(new Contract<CreateUserCommand>()
+            .Requires()
+            .IsNotNullOrWhiteSpace(Password, "CreateUserCommand.Password", "A senha não deve ser vazia.")
+            .IsNotNullOrEmpty(Password, "CreateUserCommand.Password", "A senha não deve ser vazia.")
+            .IsLowerThan(6, Password.Length, "CreateUserCommand.Password", "A senha deve conter mais de 6 caracteres.")
+            .IsGreaterThan(16, Password.Length, "CreateUserCommand.Password", "A senha deve conter menos de 16 caracteres.")
+            );
+    #endregion
 }

@@ -8,7 +8,8 @@ public sealed class CreateUserTypeCommand : Command
 {
     public CreateUserTypeCommand(
         Guid licenseeId,
-        Guid companyId, EErpUsersTypes erpUserType,
+        Guid companyId, 
+        EErpUsersTypes erpUserType,
         string description,
         bool canRead,
         bool canWrite,
