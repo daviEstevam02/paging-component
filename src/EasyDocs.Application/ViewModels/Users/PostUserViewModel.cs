@@ -4,6 +4,7 @@ namespace EasyDocs.Application.ViewModels.Users;
 
 public sealed class PostUserViewModel
 {
+    public Guid UserId { get; set; }
     public Guid CompanyId { get; set; }
     public Guid LicenseeId { get; set; }
     public Guid UserTypeId { get; set; }

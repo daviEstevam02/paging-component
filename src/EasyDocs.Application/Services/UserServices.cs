@@ -44,7 +44,10 @@ public sealed class UserServices : IUserServices
 
         var token = TokenServices.GenerateToken(userExists);
 
-        return new ServiceResponse(true, token);
+        var response = _mapper.Map<ResponseLoginViewModel>(userExists);
+        response.Token = token;
+
+        return new ServiceResponse(true, response);
     }
 
     public async Task<ServiceResponse> Create(PostUserViewModel viewModel)

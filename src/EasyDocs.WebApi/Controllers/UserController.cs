@@ -23,7 +23,7 @@ public sealed class UserController : ApiController
     /// </remarks>
     [HttpPost("login")]
     [AllowAnonymous]
-    public async Task<IActionResult> Login([FromBody] LoginRequestViewModel viewModel)
+    public async Task<IActionResult> Login([FromBody] RequestLoginViewModel viewModel)
         => CustomResponse(await _userServices.Login(viewModel.Email, viewModel.Senha));
 
     /// <summary>

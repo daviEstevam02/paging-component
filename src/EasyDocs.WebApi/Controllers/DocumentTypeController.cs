@@ -1,6 +1,4 @@
 ﻿using EasyDocs.Application.Interfaces;
-using EasyDocs.Application.Services;
-using EasyDocs.Application.ViewModels.Companies;
 using EasyDocs.Application.ViewModels.DocumentTypes;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

@@ -3,10 +3,12 @@ using EasyDocs.Application.Helper;
 using EasyDocs.Application.ViewModels.Companies;
 using EasyDocs.Application.ViewModels.Documents;
 using EasyDocs.Application.ViewModels.DocumentTypes;
+using EasyDocs.Application.ViewModels.Users;
 using EasyDocs.Application.ViewModels.UserTypes;
 using EasyDocs.Domain.Commands.Companies;
 using EasyDocs.Domain.Commands.Documents;
 using EasyDocs.Domain.Commands.DocumentTypes;
+using EasyDocs.Domain.Commands.Users;
 using EasyDocs.Domain.Commands.UserTypes;
 
 namespace EasyDocs.Application.AutoMapper;
@@ -127,6 +129,41 @@ public sealed class ViewModelToDomainProfile : Profile
 
         CreateMap<DeleteUserTypeViewModel, DeleteUserTypeCommand>()
           .ConstructUsing(viewModel => new DeleteUserTypeCommand(
+              viewModel.Id,
+              viewModel.UserId)
+          );
+        #endregion
+
+        #region Users
+        CreateMap<PostUserViewModel, CreateUserCommand>()
+         .ConstructUsing(viewModel => new CreateUserCommand(
+             viewModel.LicenseeId,
+             viewModel.CompanyId,
+             viewModel.UserTypeId,
+             viewModel.LinkCode,
+             viewModel.DocumentGroup,
+             viewModel.Username,
+             viewModel.Email,
+             viewModel.Password,
+             viewModel.UserId)
+         );
+
+        CreateMap<PutUserViewModel, UpdateUserCommand>()
+           .ConstructUsing(viewModel => new UpdateUserCommand(
+               viewModel.Id,
+               viewModel.LicenseeId,
+               viewModel.CompanyId,
+               viewModel.UserTypeId,
+               viewModel.LinkCode,
+               viewModel.DocumentGroup,
+               viewModel.Username,
+               viewModel.Email,
+               viewModel.Password,
+               viewModel.UserId)
+           );
+
+        CreateMap<DeleteUserViewModel, DeleteUserCommand>()
+          .ConstructUsing(viewModel => new DeleteUserCommand(
               viewModel.Id,
               viewModel.UserId)
           );

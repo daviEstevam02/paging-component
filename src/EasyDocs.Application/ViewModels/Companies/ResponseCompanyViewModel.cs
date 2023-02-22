@@ -19,6 +19,6 @@ public sealed class ResponseCompanyViewModel
     public string Cnpj { get; set; } = string.Empty;
     public bool IsHeadquarter { get; set; }
     public DateTime CreatedAt { get; set; }
-    public string UpdatedAt { get; set; }
+    public DateTime UpdatedAt { get; set; }
     public string Status { get; set; }
 }

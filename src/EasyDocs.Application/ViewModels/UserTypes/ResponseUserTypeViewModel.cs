@@ -11,6 +11,6 @@ public sealed class ResponseUserTypeViewModel
     public string Description { get; set; }
     public Role Roles { get; set; } = null!;
     public DateTime CreatedAt { get; set; }
-    public string UpdatedAt { get; set; }
+    public DateTime UpdatedAt { get; set; }
     public string Status { get; set; }
 }
