@@ -97,7 +97,7 @@ public sealed class UserCommandHandler : CommandHandler<User>,
             user.DocumentGroup,
             user.Username,
             user.Email,
-            user.Password
+            user.Password,
             userExists.Id,
             userExists.Username.ToString()!
             )
