@@ -3,7 +3,7 @@ using EasyDocs.Domain.Entities;
 
 namespace EasyDocs.Domain.Interfaces;
 
-public interface ILicenseeRepository : IBaseRepository<Licensee>
+public interface IClientRepository : IBaseRepository<Client>
 {
-    Task<bool> LicenseeExists(Guid id);
+    Task<bool> ClientExists(Guid clientId);
 }

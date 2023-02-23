@@ -4,17 +4,15 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace EasyDocs.Infra.Data.Mappings;
 
-public sealed class LicenseeMap : IEntityTypeConfiguration<Licensee>
+public sealed class ClientMap : IEntityTypeConfiguration<Client>
 {
-    public void Configure(EntityTypeBuilder<Licensee> builder)
+    public void Configure(EntityTypeBuilder<Client> builder)
     {
-        builder.HasKey(l => l.Id);
+        builder.HasKey(c => c.Id);
 
-        builder.Ignore(l => l.Notifications);
-
-        builder.OwnsOne(l => l.Description, description =>
+        builder.OwnsOne(c => c.Description, description =>
         {
-            description.Property(d => d.Text)
+            description.Property(desc => desc.Text)
             .HasColumnType("varchar(150)")
             .HasColumnName("Description");
 

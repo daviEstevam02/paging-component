@@ -10,9 +10,8 @@ public sealed class UserUpdatedEvent : Event
 {
     public UserUpdatedEvent(
         Guid id,
-        Guid licenseeId,
-        Guid companyId,
-        Guid userTypeId,
+        Guid clientId,
+        EUserTypes userType,
         string linkCode,
         EDocumentGroup documentGroup,
         Username userUsername,
@@ -24,9 +23,8 @@ public sealed class UserUpdatedEvent : Event
     {
         AggregateId = id;
         Id = id;
-        LicenseeId = licenseeId;
-        CompanyId = companyId;
-        UserTypeId = userTypeId;
+        ClientId = clientId;
+        UserType = userType;
         LinkCode = linkCode;
         DocumentGroup = documentGroup;
         UserUsername = userUsername;
@@ -35,12 +33,11 @@ public sealed class UserUpdatedEvent : Event
     }
 
     public Guid Id { get; private set; }
-    public Guid LicenseeId { get; private set; }
-    public Guid CompanyId { get; private set; }
-    public Guid UserTypeId { get; private set; }
-    public string LinkCode { get; set; } = string.Empty;
+    public Guid ClientId { get; private set; }
+    public EUserTypes UserType { get; private set; }
+    public string LinkCode { get; set; }
     public EDocumentGroup DocumentGroup { get; private set; }
-    public Username UserUsername { get; private set; } = null!;
-    public Email Email { get; private set; } = null!;
-    public Password Password { get; private set; } = null!;
+    public Username UserUsername { get; private set; }
+    public Email Email { get; private set; }
+    public Password Password { get; private set; }
 }

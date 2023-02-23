@@ -31,9 +31,7 @@ public class EasyDocsContext : DbContext, IUnitOfWork
         base.OnModelCreating(modelBuilder);
     }
 
-    public DbSet<Licensee> Licensees { get; set; }
-    public DbSet<Company> Companies { get; set; }
-    public DbSet<UserType> UserTypes { get; set; }
+    public DbSet<Client> Clients { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<DocumentType> DocumentTypes { get; set; }
     public DbSet<Document> Documents { get; set; }

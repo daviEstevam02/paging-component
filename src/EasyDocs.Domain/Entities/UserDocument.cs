@@ -11,23 +11,19 @@ public sealed class UserDocument : Entity
         Guid id, 
         Guid userId, 
         Guid documentId, 
-        Guid companyId, 
-        Guid licenseeId
+        Guid clientId
         ) : base(id)
     {
         UserId = userId;
         DocumentId = documentId;
-        CompanyId = companyId;
-        LicenseeId = licenseeId;
+        ClientId = clientId;
     }
 
     public Guid UserId { get; private set; }
     public Guid DocumentId { get; private set; }
-    public Guid CompanyId { get; private set; }
-    public Guid LicenseeId { get; private set; }
+    public Guid ClientId { get; private set; }
 
-    public Licensee Licensee { get; private set; } = null!;
-    public Company Company { get; private set; } = null!;
+    public Client Client { get; private set; } = null!;
     public User User { get; private set; } = null!;
     public Document Document { get; private set; } = null!;
 }

@@ -7,10 +7,9 @@ namespace EasyDocs.Domain.Commands.Users;
 public sealed class CreateUserCommand : Command
 {
     public CreateUserCommand(
-        Guid licenseeId, 
-        Guid companyId, 
-        Guid userTypeId, 
+        Guid clientId, 
         string linkCode, 
+        EUserTypes userType, 
         EDocumentGroup documentGroup, 
         string username, 
         string email, 
@@ -18,9 +17,8 @@ public sealed class CreateUserCommand : Command
         Guid userId)
     {
         UserId = userId;
-        LicenseeId = licenseeId;
-        CompanyId = companyId;
-        UserTypeId = userTypeId;
+        ClientId = clientId;
+        UserType = userType;
         LinkCode = linkCode;
         DocumentGroup = documentGroup;
         Username = username;
@@ -28,14 +26,13 @@ public sealed class CreateUserCommand : Command
         Password = password;
     }
 
-    public Guid LicenseeId { get; private set; }
-    public Guid CompanyId { get; private set; }
-    public Guid UserTypeId { get; private set; }
-    public string LinkCode { get; private set; } = string.Empty;
+    public Guid ClientId { get; private set; }
+    public EUserTypes UserType { get; private set; }
+    public string LinkCode { get; private set; }
     public EDocumentGroup DocumentGroup { get; private set; }
-    public string Username { get; private set; } = string.Empty;
-    public string Email { get; private set; } = string.Empty;
-    public string Password { get; private set; } = string.Empty;
+    public string Username { get; private set; }
+    public string Email { get; private set; }
+    public string Password { get; private set; }
 
     #region Fail Fast Validations
     public override void Validate()

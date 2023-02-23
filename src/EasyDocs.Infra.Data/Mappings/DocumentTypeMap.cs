@@ -12,13 +12,9 @@ public sealed class DocumentTypeMap : IEntityTypeConfiguration<DocumentType>
 
         builder.Ignore(dt => dt.Notifications);
 
-        builder.HasOne(dt => dt.Licensee)
+        builder.HasOne(dt => dt.Client)
             .WithMany(l => l.DocumentTypes)
-            .HasForeignKey(dt => dt.LicenseeId);
-
-        builder.HasOne(dt => dt.Company)
-            .WithMany(l => l.DocumentTypes)
-            .HasForeignKey(dt => dt.CompanyId);
+            .HasForeignKey(dt => dt.ClientId);
 
         builder.OwnsOne(dt => dt.Description, description =>
         {

@@ -1,15 +1,11 @@
 ﻿using AutoMapper;
 using EasyDocs.Application.Helper;
-using EasyDocs.Application.ViewModels.Companies;
 using EasyDocs.Application.ViewModels.Documents;
 using EasyDocs.Application.ViewModels.DocumentTypes;
 using EasyDocs.Application.ViewModels.Users;
-using EasyDocs.Application.ViewModels.UserTypes;
-using EasyDocs.Domain.Commands.Companies;
 using EasyDocs.Domain.Commands.Documents;
 using EasyDocs.Domain.Commands.DocumentTypes;
 using EasyDocs.Domain.Commands.Users;
-using EasyDocs.Domain.Commands.UserTypes;
 
 namespace EasyDocs.Application.AutoMapper;
 
@@ -52,26 +48,6 @@ public sealed class ViewModelToDomainProfile : Profile
            );
         #endregion
 
-        #region Companies
-        CreateMap<PostCompanyViewModel, CreateCompanyCommand>()
-            .ConstructUsing(viewModel => new CreateCompanyCommand(
-                viewModel.LicenseeId,
-                viewModel.FantasyName,
-                viewModel.LegalName,
-                viewModel.Country,
-                viewModel.State,
-                viewModel.City,
-                viewModel.Neighborhood,
-                viewModel.Street,
-                viewModel.Number,
-                viewModel.Compliment,
-                viewModel.Contact,
-                viewModel.Cnpj,
-                viewModel.IsHeadquarter,
-                viewModel.UserId)
-            );
-        #endregion
-
         #region DocumentTypes
         CreateMap<PostDocumentTypeViewModel, CreateDocumentTypeCommand>()
            .ConstructUsing(viewModel => new CreateDocumentTypeCommand(
@@ -94,41 +70,6 @@ public sealed class ViewModelToDomainProfile : Profile
 
         CreateMap<DeleteDocumentTypeViewModel, DeleteDocumentTypeCommand>()
           .ConstructUsing(viewModel => new DeleteDocumentTypeCommand(
-              viewModel.Id,
-              viewModel.UserId)
-          );
-        #endregion
-
-        #region UserTypes
-        CreateMap<PostUserTypeViewModel, CreateUserTypeCommand>()
-          .ConstructUsing(viewModel => new CreateUserTypeCommand(
-              viewModel.LicenseeId,
-              viewModel.CompanyId,
-              viewModel.ErpUserType,
-              viewModel.Description,
-              viewModel.CanRead,
-              viewModel.CanWrite,
-              viewModel.CanUpdate,
-              viewModel.CanDelete,
-              viewModel.UserId)
-          );
-
-        CreateMap<PutUserTypeViewModel, UpdateUserTypeCommand>()
-           .ConstructUsing(viewModel => new UpdateUserTypeCommand(
-               viewModel.Id,
-               viewModel.LicenseeId,
-               viewModel.CompanyId,
-               viewModel.ErpUserType,
-               viewModel.Description, 
-               viewModel.CanRead,
-               viewModel.CanWrite,
-               viewModel.CanUpdate,
-               viewModel.CanDelete,
-               viewModel.UserId)
-           );
-
-        CreateMap<DeleteUserTypeViewModel, DeleteUserTypeCommand>()
-          .ConstructUsing(viewModel => new DeleteUserTypeCommand(
               viewModel.Id,
               viewModel.UserId)
           );

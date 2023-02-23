@@ -1,5 +1,4 @@
 ﻿using EasyDocs.Domain.Core.Entities;
-using EasyDocs.Domain.Enums;
 using EasyDocs.Domain.ValueObjects;
 
 namespace EasyDocs.Domain.Entities;
@@ -11,8 +10,7 @@ public sealed class Document : Entity
 
     public Document(
         Guid id,
-        Guid licenseeId,
-        Guid companyId,
+        Guid clientId,
         Guid documentTypeId,
         Description description,
         Source source,
@@ -21,8 +19,7 @@ public sealed class Document : Entity
         bool specificAccess
         ) : base(id)
     {
-        LicenseeId = licenseeId;
-        CompanyId = companyId;
+        ClientId = clientId;
         DocumentTypeId = documentTypeId;
         Description = description;
         Source = source;
@@ -33,8 +30,7 @@ public sealed class Document : Entity
         AddNotifications(Description, Source);
     }
 
-    public Guid LicenseeId { get; private set; }
-    public Guid CompanyId { get; private set; }
+    public Guid ClientId { get; private set; }
     public Guid DocumentTypeId { get; private set; }
     public Description Description { get; private set; } = null!;
     public Source Source { get; private set; } = null!;
@@ -43,7 +39,6 @@ public sealed class Document : Entity
     public bool SpecificAccess { get; private set; }
 
     public DocumentType DocumentType { get; private set; } = null!;
-    public Company Company { get; private set; } = null!;
-    public Licensee Licensee { get; private set; } = null!;
+    public Client Client { get; private set; } = null!;
     public IList<UserDocument> UserDocuments { get; private set; } = null!;
 }

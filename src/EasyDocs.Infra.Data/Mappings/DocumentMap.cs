@@ -13,13 +13,9 @@ public sealed class DocumentMap : IEntityTypeConfiguration<Document>
 
         builder.Ignore(d => d.Notifications);
 
-        builder.HasOne(d => d.Licensee)
+        builder.HasOne(d => d.Client)
             .WithMany(l => l.Documents)
-            .HasForeignKey(d => d.LicenseeId);
-
-        builder.HasOne(d => d.Company)
-            .WithMany(c => c.Documents)
-            .HasForeignKey(d => d.CompanyId);
+            .HasForeignKey(d => d.ClientId);
 
         builder.HasOne(d => d.DocumentType)
             .WithMany(dt => dt.Documents)

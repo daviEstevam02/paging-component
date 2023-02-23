@@ -7,11 +7,10 @@ namespace EasyDocs.Domain.Commands.Users;
 public sealed class UpdateUserCommand : Command
 {
     public UpdateUserCommand(
-        Guid id, 
-        Guid licenseeId, 
-        Guid companyId, 
-        Guid userTypeId, 
-        string linkCode, 
+        Guid id,
+        Guid clientId,
+        string linkCode,
+        EUserTypes userType,
         EDocumentGroup documentGroup,
         string username,
         string email,
@@ -20,9 +19,8 @@ public sealed class UpdateUserCommand : Command
     {
         Id = id;
         UserId = userId;
-        LicenseeId = licenseeId;
-        CompanyId = companyId;
-        UserTypeId = userTypeId;
+        ClientId = clientId;
+        UserType = userType;
         LinkCode = linkCode;
         DocumentGroup = documentGroup;
         Username = username;
@@ -31,9 +29,8 @@ public sealed class UpdateUserCommand : Command
     }
 
     public Guid Id { get; private set; }
-    public Guid LicenseeId { get; private set; }
-    public Guid CompanyId { get; private set; }
-    public Guid UserTypeId { get; private set; }
+    public Guid ClientId { get; private set; }
+    public EUserTypes UserType { get; private set; }
     public string LinkCode { get; private set; }
     public EDocumentGroup DocumentGroup { get; private set; }
     public string Username { get; private set; }

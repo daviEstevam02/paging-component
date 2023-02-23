@@ -11,26 +11,22 @@ public sealed class DocumentType : Entity
 
     public DocumentType(
         Guid id,
-        Guid licenseeId, 
-        Guid companyId,
+        Guid clientId, 
         EDocumentGroup documentGroup,
         Description description
         ) : base(id)
     {
-        LicenseeId = licenseeId;
-        CompanyId = companyId;
+        ClientId = clientId;
         DocumentGroup = documentGroup;
         Description = description;
 
         AddNotifications(Description);
     }
 
-    public Guid LicenseeId { get; private set; }
-    public Guid CompanyId { get; private set; }
+    public Guid ClientId { get; private set; }
     public EDocumentGroup DocumentGroup { get; private set; }
     public Description Description { get; private set; } = null!;
 
-    public Company Company { get; private set; } = null!;
-    public Licensee Licensee { get; private set; } = null!;
+    public Client Client { get; private set; } = null!;
     public IList<Document> Documents { get; private set; } = null!;
 }

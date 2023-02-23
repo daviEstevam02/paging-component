@@ -6,7 +6,7 @@ namespace EasyDocs.Domain.Commands.Documents;
 public sealed class CreateDocumentCommand : Command
 {
     public CreateDocumentCommand(
-        Guid licenseeId, 
+        Guid clientId, 
         Guid companyId, 
         Guid documentTypeId, 
         string description,

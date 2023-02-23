@@ -13,17 +13,9 @@ public sealed class UserMap : IEntityTypeConfiguration<User>
 
         builder.Ignore(u => u.Notifications);
 
-        builder.HasOne(u => u.Licensee)
+        builder.HasOne(u => u.Client)
             .WithMany(l => l.Users)
-            .HasForeignKey(u => u.LicenseeId);
-
-        builder.HasOne(u => u.Company)
-            .WithMany(c => c.Users)
-            .HasForeignKey(u => u.CompanyId);
-
-        builder.HasOne(u => u.UserType)
-            .WithMany(ut => ut.Users)
-            .HasForeignKey(u => u.UserTypeId);
+            .HasForeignKey(u => u.ClientId);
 
         builder.OwnsOne(u => u.Username, username =>
         {

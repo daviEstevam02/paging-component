@@ -12,13 +12,9 @@ public sealed class UserDocumentMap : IEntityTypeConfiguration<UserDocument>
 
         builder.Ignore(ud => ud.Notifications);
 
-        builder.HasOne(ud => ud.Licensee)
+        builder.HasOne(ud => ud.Client)
             .WithMany(l => l.UserDocuments)
-            .HasForeignKey(ud => ud.LicenseeId);
-
-        builder.HasOne(ud => ud.Company)
-            .WithMany(c => c.UserDocuments)
-            .HasForeignKey(ud => ud.CompanyId);
+            .HasForeignKey(ud => ud.ClientId);
 
         builder.HasOne(ud => ud.User)
             .WithMany(u => u.UserDocuments)

@@ -17,39 +17,34 @@ public sealed class DocumentCommandHandler : CommandHandler<Document>,
 {
     private readonly IDocumentRepository _documentRepository;
     private readonly IDocumentTypeRepository _documentTypeRepository;
-    private readonly ILicenseeRepository _licenseeRepository;
-    private readonly ICompanyRepository _companyRepository;
+    private readonly IClientRepository _clientRepository;
     private readonly IUserRepository _userRepository;
 
     public DocumentCommandHandler(
         IDocumentRepository documentRepository,
         IDocumentTypeRepository documentTypeRepository,
-        ILicenseeRepository licenseeRepository,
-        ICompanyRepository companyRepository,
+        IClientRepository clientRepository,
         IUserRepository userRepository
-        ) =>
-        (_documentRepository, _documentTypeRepository, _licenseeRepository, _companyRepository, _userRepository)
-        = 
-        (documentRepository, documentTypeRepository, licenseeRepository, _companyRepository, _userRepository);
-   
+        )
+    {
+        _documentRepository = documentRepository;
+        _documentTypeRepository = documentTypeRepository;
+        _clientRepository = clientRepository;
+        _userRepository = userRepository;
+    }
+
 
     public async Task<CommandResult> Handle(CreateDocumentCommand command, CancellationToken cancellationToken)
     {
-        if (!await _documentTypeRepository.DocumentTypeExists(command.DocumentTypeId))
-        {
-            AddNotification("DocumentType", "Um tipo de documento com esse Id não existe.");
-            return new CommandResult(false, Notifications.ToList());
-        }
-
-        if (!await _licenseeRepository.LicenseeExists(command.LicenseeId))
+        if (!await _clientRepository.ClientExists(command.ClientId))
         {
             AddNotification("Licensee", "Um licenciado com esse Id não existe.");
             return new CommandResult(false, Notifications.ToList());
         }
 
-        if (!await _companyRepository.CompanyExists(command.CompanyId))
+        if (!await _documentTypeRepository.DocumentTypeExists(command.DocumentTypeId))
         {
-            AddNotification("Company", "Uma empresa com esse Id não existe.");
+            AddNotification("DocumentType", "Um tipo de documento com esse Id não existe.");
             return new CommandResult(false, Notifications.ToList());
         }
 
@@ -109,7 +104,7 @@ public sealed class DocumentCommandHandler : CommandHandler<Document>,
     public async Task<CommandResult> Handle(UpdateDocumentCommand command, CancellationToken cancellationToken)
     {
         var existentDocument = await _documentRepository.GetOneWhere(d => d.Id == command.Id);
-        if(existentDocument is null)
+        if (existentDocument is null)
         {
             AddNotification("Document", "Um documento com esse Id não existe.");
             return new CommandResult(false, Notifications.ToList());
